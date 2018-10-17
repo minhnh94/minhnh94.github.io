@@ -1,0 +1,1 @@
+window.twttr=function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};return d.getElementById(id)?t:((js=d.createElement(s)).id=id,js.src="https://platform.twitter.com/widgets.js",fjs.parentNode.insertBefore(js,fjs),t._e=[],t.ready=function(f){t._e.push(f)},t)}(document,"script","twitter-wjs");

@@ -1,0 +1,1 @@
+$(window).keydown(function(e){return!e.ctrlKey&&(!e.altKey&&(!e.shiftKey&&(!e.metaKey&&void 0)))}),$("body").bind("copy paste cut drag drop",function(e){e.preventDefault()});
