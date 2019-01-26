@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+        <meta name="description" content="Partitioning usage is not limited behind load balancing. In fact, partitioning can be used to make data more manageable. A practical use case is managing row deletion, which is featured in this article.">
+    
+    
+    <title>Effectively manage row deletion using mysql partitioning | Tsukie - Lifestyle, technologies, travel... and more</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="programming,mysql,software-development" />
+    
+    <meta name="description" content="Partitioning usage is not limited behind load balancing. In fact, partitioning can be used to make data more manageable. A practical use case is managing row deletion, which is featured in this articl">
+<meta name="keywords" content="programming,mysql,software-development">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effectively manage row deletion using mysql partitioning">
+<meta property="og:url" content="https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/index.html">
+<meta property="og:site_name" content="Tsukie - Lifestyle, technologies, travel... and more">
+<meta property="og:description" content="Partitioning usage is not limited behind load balancing. In fact, partitioning can be used to make data more manageable. A practical use case is managing row deletion, which is featured in this articl">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/thumbnail.jpg">
+<meta property="og:updated_time" content="2019-01-26T12:39:47.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effectively manage row deletion using mysql partitioning">
+<meta name="twitter:description" content="Partitioning usage is not limited behind load balancing. In fact, partitioning can be used to make data more manageable. A practical use case is managing row deletion, which is featured in this articl">
+<meta name="twitter:image" content="https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/thumbnail.jpg">
+<meta property="fb:app_id" content="153050218821313">
+    
+
+    
+
+    
+        <link rel="icon" href="../../../css/images/favicon.jpg" />
+    
+
+    <link rel="stylesheet" href="../../../libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+
+    <script src="../../../libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-112909631-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-3728474335881495",
+            enable_page_level_ads: true
+        });
+    </script>
+</head>
+
+<!--<body ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">-->
+<body>
+    <div id="fb-root"></div>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        
+                            <a href="../../../index.html" class="logo"></a>
+                        
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                        
+                                            <li class="main-nav-list-item" >
+                                                <a class="main-nav-list-link" href="../../../index.html">Home</a>
+                                            </li>
+                                        
+                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/lifestyle">lifestyle</a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/technologies">technologies</a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/travel">travel</a>
+                                                </li>
+                                            
+                                        
+                                    
+                                        
+                                            <li class="main-nav-list-item" >
+                                                <a class="main-nav-list-link" href="../../../contact-us.html">Contact us</a>
+                                            </li>
+                                        
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container container-body-part">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+        
+        <i class="icon fa fa-folder-open"></i>Category: <a class='page-title-link'>technologies </a>
+
+        <br>
+        <ul style="position: relative; display: inline-block;">
+            <li style="display: inline-block;"><a href="/">English</a></li>・
+            <li style="display: inline-block;"><a href="/vi/">Tiếng Việt</a></li>・
+            <li style="display: inline-block;"><a href="/ja/">日本語</a></li>
+        </ul>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-effectively-manage-row-deletion-using-mysql-partitioning" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Effectively manage row deletion using mysql partitioning
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="" class="article-date">
+            <time datetime="2019-01-26T10:29:08.000Z" itemprop="datePublished">2019-01-26</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/programming">programming</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/mysql">mysql</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/software-development">software development</a>
+                
+            </span>
+        
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><strong>Article available in <a href="/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/">English</a></strong></p>
+<p>When you are about to delete some rows in MySQL, your first choice is usually using <code>DELETE FROM</code>. This is called hard deletion (or physical deletion). In fact, real-life business rarely uses this command when an immediate delete request is issued. More often than not, they use a technique called “soft deletion” (or logical deletion), which is implemented by adding a column named “deleted” or whatever with the same meaning to mark the rows as “deleted”. The purpose of this is to keep track of which rows were deleted, so as to inspect and easily revert changes if something goes wrong. However, with time the soft-deleted rows will start to clog up the database, which results in a performance decrease. After a certain period, soft-deleted rows have to be hard-deleted. However, querying soft-deleted rows followed by deletion with <code>DELETE</code> command will take quite much time and is prone to mistake. In this article, we will take a look at the method using partition to manage row deletion, which can be applied to a variety of use cases.</p>
+<h1 id="1-Review-What-is-partitioning"><a href="#1-Review-What-is-partitioning" class="headerlink" title="1. Review: What is partitioning"></a>1. Review: What is partitioning</h1><p> Partitioning is a technique used to divide a database and its content into multiple parts. The primary use of partitioning is for load balancing. However, you can use partitioning to make large data more manageable, which is the gist of this article.</p>
+<p> There are 2 types of partitioning: Vertical and horizontal partitioning. While vertical partitioning involves table structure adjustment, horizontal partitioning splits a table’s content into multiple parts. The technique used to manage deleted rows in this article will utilize horizontal partitioning.</p>
+<p>According to Wikipedia, more than one table has to be created to implement horizontal partitioning. Fortunately, MySQL 5.6 and above comes with horizontal partitioning support out of the box. Defining a partitioning scheme and MySQL will take care of the rest.</p>
+<h1 id="2-Implement-new-row-deletion-mechanism"><a href="#2-Implement-new-row-deletion-mechanism" class="headerlink" title="2. Implement new row deletion mechanism"></a>2. Implement new row deletion mechanism</h1><p>Assume you have an already prepared table named <em>receipt</em> (How the table is structured is at your own idea). </p>
+<ul>
+<li>The first thing is to add 2 more columns, “disabled” and “month” to the <em>receipt</em> table. A simple <code>ALTER TABLE</code> should suffice.</li>
+</ul>
+<p>The “disabled” column will be responsible for keeping track of the soft-deleted rows. The “month” column will record when a row is updated (soft deletion is likely to be the last update query ever executed on a row, therefore “month” of a soft-deleted column will mark its deletion time in month).</p>
+<ul>
+<li>Execute a horizontal partitioning to this table by the MySQL code below<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> receipt <span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">LIST</span> <span class="keyword">COLUMNS</span>(disabled, <span class="keyword">month</span>)</span><br><span class="line">    <span class="keyword">PARTITIONS</span> <span class="number">13</span>(</span><br><span class="line">        <span class="keyword">PARTITION</span> pd0 <span class="keyword">VALUES</span> <span class="keyword">IN</span> (</span><br><span class="line">            (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">2</span>), (<span class="number">0</span>, <span class="number">3</span>), (<span class="number">0</span>, <span class="number">4</span>), (<span class="number">0</span>, <span class="number">5</span>), (<span class="number">0</span>, <span class="number">6</span>),</span><br><span class="line">            (<span class="number">0</span>, <span class="number">7</span>), (<span class="number">0</span>, <span class="number">8</span>), (<span class="number">0</span>, <span class="number">9</span>), (<span class="number">0</span>, <span class="number">10</span>), (<span class="number">0</span>, <span class="number">11</span>), (<span class="number">0</span>, <span class="number">12</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m1 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">1</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m2 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">2</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m3 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">3</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m4 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">4</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m5 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">5</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m6 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">6</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m7 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">7</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m8 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">8</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m9 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">9</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m10 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">10</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m11 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">11</span>)),</span><br><span class="line">        <span class="keyword">PARTITION</span> pd1m12 <span class="keyword">VALUES</span> <span class="keyword">IN</span> ((<span class="number">1</span>, <span class="number">12</span>)))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Let me explain what is happening here.<br>The SQL code allows us to divide the <em>receipt</em> into 13 partitions, based on the value of the (“disabled”, “month”) tuple. The first partition, named “pd0”, stores all records that still haven’t been marked as “soft-deleted”, thus “disabled” value is 0. The following 12 partitions store all soft-deleted rows, which will be divided and arranged by deleted month.</p>
+<ul>
+<li>Create a MySQL trigger that activated when a row is soft-deleted. The trigger will modify the “month” column value to the month when that row is soft-deleted:<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> change_month_column_on_soft_deletion</span><br><span class="line"> <span class="keyword">BEFORE</span> <span class="keyword">UPDATE</span> <span class="keyword">ON</span> ｀receipt｀ <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line">   <span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">IF</span> old.disabled = <span class="number">0</span> <span class="keyword">AND</span> new.disabled = <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line">     <span class="keyword">SET</span> new.month := <span class="keyword">month</span>(<span class="keyword">CURRENT_TIMESTAMP</span>);</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line">   <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>The code above is self-explanatory: Change the “month” column value to the month of the timestamp recorded when a row’s “disabled” column value is changed.</p>
+<ul>
+<li>Now our database will automatically organize soft-deleted rows based on the deleted timestamp’s month. The soft-deleted data must be emptied after a certain duration, therefore a crontab that automatically runs a bash file which will execute hard deletion on rows that marked soft-deleted <em>x</em> months ago (<em>x</em> based on the requirement of the project) needs to be created too. The SQL command to execute is straightforward: We only have to truncate the appropriate partition. The bash check today’s month and perform this SQL command<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> receipt <span class="keyword">TRUNCATE</span> <span class="keyword">PARTITION</span> pd1mx</span><br><span class="line"><span class="comment">/* x is from 1 to 12, which partition will be </span></span><br><span class="line"><span class="comment">truncated depends on a switch case that takes value from today's month */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>The bash file’s executed routine should be once per month.<br><code>TRUNCATE</code> has a much faster execution time than <code>DELETE FROM WHERE</code> clause, the difference is profound when dealing with a large set of data. That’s how we take advantage of partition: Load balancing, ease of management and execution.</p>
+<h1 id="3-Conclusion"><a href="#3-Conclusion" class="headerlink" title="3. Conclusion"></a>3. Conclusion</h1><p>Instead of “month” column, you can use the timestamp column of the table, in this case, the partition will be based on <code>RANGE</code> method. I simplified the example by only using the timestamp’s month so that you can quickly have a glance at how this mechanism works. The “disabled” column can receive other numbers than a binary flag, to indicate different layers of deletion.<br>Soft deletion has some disadvantages too: The application code must filter soft-deleted rows when querying (this can be alleviated by using MySQL <code>VIEW</code> to do the filtering work), <code>UNIQUE</code> key and <code>CONSTRAINT</code> may not play gracefully when soft deletion is implemented, and storage management problems. However, in real life business, when data matters much more than storage cost, having soft deletion implemented can be a lifesaver. I would be happy if this article can aid you in choosing the proper way to manage deleted data.</p>
+
+        </div>
+        <footer class="article-footer">
+            <div class="fb-like" data-href="https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/index.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" style="padding: 0 0 0 30%"></div>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
+            <br><h1>Related articles</h1>
+            
+            <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/en/technologies/how-are-new-hire-software-programmers-expected-to-be/" title="How are new hire software programmers expected to be?" rel="bookmark">How are new hire software programmers expected to be?</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/en/technologies/reflections-on-trusting-trust/" title=""Reflections on trusting trust"" rel="bookmark">"Reflections on trusting trust"</a></h3></div></li></ul>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/thumbnail.jpg)" alt="Effectively manage row deletion using mysql partitioning" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/technologies/">technologies</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="" class="title">Effectively manage row deletion using mysql partitioning</a></p>
+                            <p class="item-date"><time datetime="2019-01-26T10:29:08.000Z" itemprop="datePublished">2019-01-26</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../../lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/thumbnail.jpg)" alt="I only realized these things when I was on the hospital bed" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/lifestyle/">lifestyle</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../../lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/" class="title">I only realized these things when I was on the hospital bed</a></p>
+                            <p class="item-date"><time datetime="2018-10-14T05:58:28.000Z" itemprop="datePublished">2018-10-14</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../../travel/tokyo-enjoying-good-food-without-blowing-the-budget-part-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/travel/tokyo-enjoying-good-food-without-blowing-the-budget-part-1/thumbnail.jpg)" alt="Tokyo: Enjoying good food without blowing the budget (part 1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/travel/">travel</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../../travel/tokyo-enjoying-good-food-without-blowing-the-budget-part-1/" class="title">Tokyo: Enjoying good food without blowing the budget (part 1)</a></p>
+                            <p class="item-date"><time datetime="2018-09-09T01:56:23.000Z" itemprop="datePublished">2018-09-09</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../../lifestyle/mentality-to-fight-against-loneliness-and-depression/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/lifestyle/mentality-to-fight-against-loneliness-and-depression/thumbnail.jpg)" alt="Mentality to fight against loneliness and depression" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/lifestyle/">lifestyle</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../../lifestyle/mentality-to-fight-against-loneliness-and-depression/" class="title">Mentality to fight against loneliness and depression</a></p>
+                            <p class="item-date"><time datetime="2018-07-09T14:44:13.000Z" itemprop="datePublished">2018-07-09</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../how-to-have-unlimited-trial-time-for-jetbrains-products/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/technologies/how-to-have-unlimited-trial-time-for-jetbrains-products/thumbnail.png)" alt="How to have unlimited trial time for Jetbrains products" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/technologies/">technologies</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../how-to-have-unlimited-trial-time-for-jetbrains-products/" class="title">How to have unlimited trial time for Jetbrains products</a></p>
+                            <p class="item-date"><time datetime="2018-05-27T09:00:25.000Z" itemprop="datePublished">2018-05-27</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+<div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget" style="line-height: 2.2em">
+        
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/software-development">software development</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/programming">programming</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/mysql">mysql</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/experience">experience</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/software">software</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/jetbrains">jetbrains</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/trivia">trivia</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/lifestyle">lifestyle</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/website">website</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/hosting">hosting</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/stock">stock</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/two-cents">two cents</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/mental">mental</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/japan">japan</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/tokyo">tokyo</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/food">food</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/ramen">ramen</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/food-series">food series</a>
+                
+            </span>
+        
+    </div>
+</div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <p>Copyright © 2019 Tsukie Studio. All rights reserved.</p>
+                <div><a href="terms-and-conditions.html">Terms and conditions</a> <a href="privacy-policy.html">Privacy policy</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+    
+    <script>
+    var disqus_shortname = 'tsukie-com';
+    
+    
+    var disqus_url = 'https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="../../../js/main.js"></script>
+
+<script src="../../../js/facebook.js"></script>
+<script src="../../../js/twitter.js"></script>
+
+</body>
+</html>

@@ -2,6 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tsukie.com/contact-us.html</loc>
+    
+    <lastmod>2019-01-26T12:43:06.292Z</lastmod>
+    
+    <changefreq>weekly</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/</loc>
+    
+    <lastmod>2019-01-26T12:39:47.911Z</lastmod>
+    
+    <changefreq>weekly</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://tsukie.com/terms-and-conditions.html</loc>
+    
+    <lastmod>2019-01-26T10:23:35.515Z</lastmod>
+    
+    <changefreq>weekly</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://tsukie.com/privacy-policy.html</loc>
+    
+    <lastmod>2019-01-26T10:23:35.514Z</lastmod>
+    
+    <changefreq>weekly</changefreq>
+  </url>
+  
+  <url>
     <loc>https://tsukie.com/en/lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/</loc>
     
     <lastmod>2018-10-14T06:51:52.260Z</lastmod>
@@ -101,14 +133,6 @@
     <loc>https://tsukie.com/ja/jinsei-seikatsu/afc-u23-senshuken-betonamu-sakka-o-koeru-mono-ni-natta-toki/</loc>
     
     <lastmod>2018-08-29T14:05:58.780Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/about.html</loc>
-    
-    <lastmod>2018-08-29T14:03:58.857Z</lastmod>
     
     <changefreq>weekly</changefreq>
   </url>
