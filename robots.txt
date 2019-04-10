@@ -1,7 +1,4 @@
 User-agent: *
-Disallow: /libs/
-Disallow: /css/
-Disallow: /js/
 Disallow: /archives/
 Allow: /
 Allow: /categories/
@@ -9,4 +6,7 @@ Allow: /tags/
 Allow: /en/
 Allow: /ja/
 Allow: /vi/
+Allow: /libs/
+Allow: /css/
+Allow: /js/
 Sitemap: https://tsukie.com/sitemap.xml
