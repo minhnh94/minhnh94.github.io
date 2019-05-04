@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+        <meta name="description" content="After many trials and errors, I think I have found some ways to circumvent the nasty random respring on iOS 12 jailbroken by unc0ver (my device is iphone 6S). The attempted solutions are gathered in this article.">
+    
+    
+    <title>iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion | Tsukie - Lifestyle, technologies, travel... and more</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="ios,hack,jailbreak" />
+    
+    <meta name="description" content="After many trials and errors, I think I have found some ways to circumvent the nasty random respring on iOS 12 jailbroken by unc0ver (my device is iphone 6S). The attempted solutions are gathered in t">
+<meta name="keywords" content="ios,hack,jailbreak">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion">
+<meta property="og:url" content="https://tsukie.com/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/index.html">
+<meta property="og:site_name" content="Tsukie - Lifestyle, technologies, travel... and more">
+<meta property="og:description" content="After many trials and errors, I think I have found some ways to circumvent the nasty random respring on iOS 12 jailbroken by unc0ver (my device is iphone 6S). The attempted solutions are gathered in t">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tsukie.com/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/thumbnail.jpg">
+<meta property="og:updated_time" content="2019-05-04T10:26:45.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion">
+<meta name="twitter:description" content="After many trials and errors, I think I have found some ways to circumvent the nasty random respring on iOS 12 jailbroken by unc0ver (my device is iphone 6S). The attempted solutions are gathered in t">
+<meta name="twitter:image" content="https://tsukie.com/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/thumbnail.jpg">
+<meta property="fb:app_id" content="153050218821313">
+    
+
+    
+
+    
+        <link rel="icon" href="../../../css/images/favicon.jpg" />
+    
+
+    <link rel="stylesheet" href="../../../libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+
+    <script src="../../../libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-112909631-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+<!--<body ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">-->
+<body>
+    <div id="fb-root"></div>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        
+                            <a href="../../../index.html" class="logo"></a>
+                        
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                        
+                                            <li class="main-nav-list-item" >
+                                                <a class="main-nav-list-link" href="../../../index.html">Home</a>
+                                            </li>
+                                        
+                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/lifestyle">lifestyle</a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/technologies">technologies</a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="main-nav-list-item">
+                                                    <a class="main-nav-list-link" href="../../../categories/travel">travel</a>
+                                                </li>
+                                            
+                                        
+                                    
+                                        
+                                            <li class="main-nav-list-item" >
+                                                <a class="main-nav-list-link" href="../../../contact-us.html">Contact us</a>
+                                            </li>
+                                        
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container container-body-part">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+        
+        <i class="icon fa fa-folder-open"></i>Category: <a class='page-title-link'>technologies </a>
+
+        <br>
+        <ul style="position: relative; display: inline-block;">
+            <li style="display: inline-block;"><a href="/">English</a></li>・
+            <li style="display: inline-block;"><a href="/vi/">Tiếng Việt</a></li>・
+            <li style="display: inline-block;"><a href="/ja/">日本語</a></li>
+        </ul>
+    </h1>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- recent content ad -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3728474335881495"
+         data-ad-slot="4325813506"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="" class="article-date">
+            <time datetime="2019-05-04T08:58:24.000Z" itemprop="datePublished">2019-05-04</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/ios">ios</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/hack">hack</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                
+                    <a href="../../../tags/jailbreak">jailbreak</a>
+                
+            </span>
+        
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><strong>Article available in <a href="/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/">English</a></strong></p>
+<p>Many Reddit users have reported the random respring bug on their iOS 12 devices jailbroken by unc0ver. Some users posted their devices’ crash logs, and the cause of random respring was assumed that the occupied memory was overflowed and caused the springboard to crash, leading to respring.</p>
+<p>My iPhone 6S device respringed itself at least twice a day. Based on that theory, I have tried to find a solution to stop the random resprings on my device. For me, after many tries, the MiDevice tweak seemed to be the cause since it could change the springboard icon’s opacity and layout and make folder icon background as well as opened folder background become transparent. By disabling MiDevice tweak via iCleaner and using Boxy 3 instead, the random respring frequency apparently dropped significantly (Once per 2 days). Snowboard tweak was also reported as the random respring culprit, but under my observation, it was unlikely that Snowboard tweak was the cause (I uninstalled Snowboard, and the random respring bug still continued).</p>
+<h1 id="But-the-ultimate-solution-was-not-that"><a href="#But-the-ultimate-solution-was-not-that" class="headerlink" title="But the ultimate solution was not that"></a>But the ultimate solution was not that</h1><p><img src="https://i.imgur.com/3VmUbv7.png" alt=""></p>
+<p>By turning on “Increase Memory Limit” and re-jailbreaking, my device hasn’t had any random resprings in the last 2 days with MiDevice installed! Perhaps the insufficient memory cause that led to respring theory was right after all.</p>
+<p>I also didn’t use the status bar editing feature in MiDevice. There was an incompatible status bar modifier that caused my device to fall into safe mode before, and for extra safety, I refrained from using that feature.</p>
+<h1 id="Conclusion-Random-respring-solution-I-have-collected-so-far"><a href="#Conclusion-Random-respring-solution-I-have-collected-so-far" class="headerlink" title="Conclusion: Random respring solution I have collected so far"></a>Conclusion: Random respring solution I have collected so far</h1><p>I will sort the solution list by its relevance and importance.</p>
+<ul>
+<li><strong>Enable the “Increase Memory Limit” option in unc0ver, and re-jailbreak.</strong></li>
+<li>You might want to disable status bar editing tweaks or features temporarily. That might include many status bar modifiers such as Zeppelin, Alkaline… Disable them and observe for a few days to see whether the random respring frequency is reduced.</li>
+<li>Uninstall all pirate tweaks and remove all pirate repositories in your device.</li>
+<li>Use <a href="https://www.reddit.com/r/jailbreak/comments/bczdif/release_snapback_beta_time_machine_for_ios/" target="_blank" rel="noopener">Snapback tweak</a> to back up your installed tweaks, and then enable “Restore RootFS” function in unc0ver and re-jailbreak to return your device to newly jailbroken state. Then restore your installed tweaks via Snapback.</li>
+<li>Try switching to <a href="https://chimera.sh/" target="_blank" rel="noopener">Chimera jailbreak</a>. Chimera comes with Sileo (a Cydia alternative), it has its own tweak installing mechanism which is different from Cydia substrate. Since Cydia substrate hasn’t been updated to support iOS 12 fully, it might be unstable and this might be the cause of random resprings. I tried switching to Chimera/Sileo and had not experienced any random resprings during that time. The reason I turned back to unc0ver is that Sileo tweak injecting mechanism doesn’t work well with some tweaks, for example, Youtube Tools or Safari Plus (I would like to cover the differences, as well as my personal experience between unc0ver and Chimera in a later article). If the tweaks you are using are compatible with Chimera/Sileo then you might want to permanently migrate to Chimera jailbreak (Use Snapback to backup your tweaks just in case you want to switch back to unc0ver).</li>
+</ul>
+<h1 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h1><p>Show off your home screen personalization. Here is mine!</p>
+<p><img src="https://i.imgur.com/83aT9mL.jpg" alt=""></p>
+
+        </div>
+        <footer class="article-footer">
+            <div class="fb-like" data-href="https://tsukie.com/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/index.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true" style="padding: 0 0 0 30%"></div>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
+            <br><h1>Related articles</h1>
+            
+            
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- recent content ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3728474335881495"
+                 data-ad-slot="4325813506"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="widgets-container">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- recent content ad -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-3728474335881495"
+		     data-ad-slot="4325813506"
+		     data-ad-format="auto"
+		     data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/thumbnail.jpg)" alt="iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/technologies/">technologies</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="" class="title">iOS 12 uncover jailbreak random respring problem - Cause and solution suggestion</a></p>
+                            <p class="item-date"><time datetime="2019-05-04T08:58:24.000Z" itemprop="datePublished">2019-05-04</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../adding-non-php-libraries-to-a-laravel-project-with-composer/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/technologies/adding-non-php-libraries-to-a-laravel-project-with-composer/thumbnail.jpg)" alt="Adding non-PHP libraries to a Laravel project using Composer" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/technologies/">technologies</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../adding-non-php-libraries-to-a-laravel-project-with-composer/" class="title">Adding non-PHP libraries to a Laravel project using Composer</a></p>
+                            <p class="item-date"><time datetime="2019-04-09T02:33:54.000Z" itemprop="datePublished">2019-04-09</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../../lifestyle/what-is-humblebragging-why-it-is-obnoxious-and-how-to-avoid-it/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/lifestyle/what-is-humblebragging-why-it-is-obnoxious-and-how-to-avoid-it/thumbnail.png)" alt="What is humblebragging, why is it obnoxious, and how to avoid it" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/lifestyle/">lifestyle</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../../lifestyle/what-is-humblebragging-why-it-is-obnoxious-and-how-to-avoid-it/" class="title">What is humblebragging, why is it obnoxious, and how to avoid it</a></p>
+                            <p class="item-date"><time datetime="2019-02-15T06:57:44.000Z" itemprop="datePublished">2019-02-15</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../../lifestyle/if-you-ever-feel-like-a-loser-tips-that-help-you-feel-better/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/lifestyle/if-you-ever-feel-like-a-loser-tips-that-help-you-feel-better/thumbnail.jpg)" alt="If you ever feel like a loser, here are 6 tips that can help you feel better" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/lifestyle/">lifestyle</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../../lifestyle/if-you-ever-feel-like-a-loser-tips-that-help-you-feel-better/" class="title">If you ever feel like a loser, here are 6 tips that can help you feel better</a></p>
+                            <p class="item-date"><time datetime="2019-02-14T02:52:24.000Z" itemprop="datePublished">2019-02-14</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="../effectively-manage-row-deletion-using-mysql-partitioning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/thumbnail.jpg)" alt="Effectively manage row deletion using MySQL partitioning" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category">
+                                
+                                    <a class="article-category-link" href="../../../categories/technologies/">technologies</a>
+                                
+                            </p>
+                            <p class="item-title"><a href="../effectively-manage-row-deletion-using-mysql-partitioning/" class="title">Effectively manage row deletion using MySQL partitioning</a></p>
+                            <p class="item-date"><time datetime="2019-01-26T10:29:08.000Z" itemprop="datePublished">2019-01-26</time></p>
+                        </div>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+<div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget" style="line-height: 2.2em">
+        
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/self-help">self help</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/lifestyle">lifestyle</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/stock">stock</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/mental">mental</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/software-development">software development</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/programming">programming</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/mysql">mysql</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/software">software</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/jetbrains">jetbrains</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/website">website</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/hosting">hosting</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/php">php</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/laravel">laravel</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/hack">hack</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/ios">ios</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/jailbreak">jailbreak</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/japan">japan</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/tokyo">tokyo</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/ramen">ramen</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/food">food</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/food-series">food series</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/experience">experience</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/trivia">trivia</a>
+                
+            </span>
+        
+            <span class="post-tag">
+                <i class="fa fa-tag"></i>
+                
+                    <a href="../../../tags/two-cents">two cents</a>
+                
+            </span>
+        
+    </div>
+</div>
+
+
+            
+        
+        <!-- recent content ad -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-3728474335881495"
+		     data-ad-slot="4325813506"
+		     data-ad-format="auto"
+		     data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+    </div>
+</aside>
+                </div>
+                <noscript>
+                    <img src="https://i.imgur.com/IOpkgxH.jpg" style="width: 80%; margin: 0 auto">
+                    <style type="text/css">
+                        .main-body-inner {display: none;}
+                    </style>
+                </noscript>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <p>Copyright © 2019 Tsukie Studio. All rights reserved.</p>
+                <div>
+                	
+                		<a href="../../../terms-and-conditions.html">Terms and conditions</a> <a href="../../../privacy-policy.html">Privacy policy</a>
+                	
+        		</div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'tsukie-com';
+    
+    
+    var disqus_url = 'https://tsukie.com/en/technologies/ios-12-uncover-jailbreak-random-respring-cause-and-solution-suggestion/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="../../../js/main.js"></script>
+
+<script src="../../../js/ads.js"></script>
+<script src="../../../js/facebook.js"></script>
+<script src="../../../js/twitter.js"></script>
+<script src="../../../js/guarder.js"></script>
+
+</body>
+</html>
