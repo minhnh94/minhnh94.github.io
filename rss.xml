@@ -1,4 +1,195 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 19 Sep 2019 16:03:52 GMT</lastBuildDate><item><title><![CDATA[Make money online with no experience story: How I made my first dollar on the Internet]]></title><description><![CDATA[Article available in English Besides my full-time job, I also looked for various ways to turn my leisure time to something that was at least…]]></description><link>https://tsukie.com/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</link><guid isPermaLink="false">https://tsukie.com/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</guid><pubDate>Fri, 24 May 2019 00:47:41 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 19 Sep 2019 16:11:18 GMT</lastBuildDate><item><title><![CDATA[Link your PSN account with Facebook while keeping Facebook two-factor authentication on]]></title><description><![CDATA[Article available in English If you have already enabled two-factor authentication on your Facebook account, you may encounter trouble when…]]></description><link>https://tsukie.com/how-to-link-your-psn-account-to-facebook-while-keeping-facebook-two-factor-authentication-on/</link><guid isPermaLink="false">https://tsukie.com/how-to-link-your-psn-account-to-facebook-while-keeping-facebook-two-factor-authentication-on/</guid><pubDate>Sat, 07 Sep 2019 16:34:39 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/how-to-link-your-psn-account-to-facebook-while-keeping-facebook-two-factor-authentication-on/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you have already enabled two-factor authentication on your Facebook account, you may encounter trouble when trying to link PSN account to your Facebook account on your PS3/PS4. Even though you typed your Facebook email, password, and the one-time generated password correctly, after clicking “Agree” button on the Terms of Services screen, the PS3/PS4 still displays that your email/password/one-time password input was wrong. This is believed to be Facebook’s bug on their services that some applications are unable to properly link to Facebook account with two-factor authentication set up.&lt;/p&gt;
+&lt;p&gt;Fortunately, the problem can be remedied with the newly implemented &lt;a href=&quot;https://www.facebook.com/help/249378535085386?helpref=popular_topics&quot;&gt;Facebook app password&lt;/a&gt;. Following the procedures below and you will be able to link your PSN account with Facebook without temporarily disabling Facebook’s two-factor authentication.&lt;/p&gt;
+&lt;h3&gt;Go to “Settings” on Facebook&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 520px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3832ed3127498fef5180999a29b67730/249e6/pic1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 127.69230769230771%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAABYlAAAWJQFJUiTwAAAEA0lEQVRIx51U228UVRifv8UnIoRgAPugYKkGJSFCDE00UC8pQiOxmmB8EJ588MEH5QHUBC/lQcR2W6BQi3QVTKS2YqF27zN7md12r93dmdmZndnb7M/vnGmXtnZb9CS/nO9855zvfL/vcoTn+0bx3PFr2EvofPsauk6O0jyCzuPD6Oq7iT1vXsaeN77ncmevi/au0pkb/AzT7ztxnaOT0HXyOoTej+/ig88n8dH5aRw9M4EX3hlHx5HPsH3/h9h/ahxb9/Vjy7Mn8FK/m+R3sevQJzjw/h10dJ/DEzu7udHDpyfQc9bNnRGe7nHhmbeGOTpeH8LOo0PYdvhLPHnwHHYdc5H8BbYduoDdx4ax9eXz2P7KRezuGcGO7gFsOfApdrx6GXt7r+LFU6N46rVBCLcnw7g9GcEvUzG4p6L4dTqG32YWcOf+PCZozz0lwz0tO/J0nNYxR/6Dzv45j5/vhTH5MI7ZQBK3fpcgNBsWgDoqZgl2tYyKrsDUCqQy8d9HDUJRUVEum0jn8lAaQDivIq4Y0JaONB8DNpubTWglHYKqKK2rD87246uegyi4voYxfAnGyCXoru+gDX6D0tC3pBvgs0prjWaN9tQrF2Hec3MLhmFAUMggewGNGv468x5unu6DMnYFxk9D0McZXDAIpbFBGLdcXMdkfexHqDd+QNE1AGv67iODucU8d9fG/x/NJcrc4CIZXB4LiXnI0RhHOpWCHIshLsuwymW6YaPZaKwP217p4WLLYC63iFQ6jZgcRzabQzaX47JlVRxPyAuGf3m4pOMGC4UCVzTopQ1psbCQJ+3QoqyqauuFaExGSJQgimHMLyT5Wo4nEKEQmKa1ysu1WJXlZYWqaigUipx2njzXSiW+ZqGo1WqrvGxrME2XedVsQnntsO3m5pTjRM/nD0CSwpx6JEIZp6Qw+sGgyEMh0l4wJK5KlFM4aygzPYtTidpH1w1qxzIUakv2YKVS4YdLOtvT+cwYrUu5WCy2YtM+w5tnnZ1xCjv/qLAZZUZJkiJOlim7LCHrZbdtHa7sFNOyYBE9Bp02y6YJVSs5P4rd3LBG1+2UaDgCr8dLrRdFgmrQ7/UhQa3nI51nzgMxGELA50ecWpIlwq5TKTXqWH7K6RQKuq0WUZ27D803C3VuBjrNVsiDcmAOtXAAFdFHay8s0Qsz6OEy09eiIVT9D1GTJccgJUvQjDLq2RSQz0LO5BCk+IlRmeOxfppqhRtueahSmTSYh74HMEQ/DHo9//cMFO8s6jGRH24L8qwaJBbxyAoPNa31WiaRgESFLUsSkhQ72NQ9FKcNQTFsJZWSKOToi0rR35fOZJDJZpEmZKlUGFKkS2eybeDssTPsfjKZRIbkfwCKRFi1j1U1PQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;It is in the drop down on the header.&quot;
+        title=&quot;It is in the drop down on the header.&quot;
+        src=&quot;/static/3832ed3127498fef5180999a29b67730/249e6/pic1.png&quot;
+        srcset=&quot;/static/3832ed3127498fef5180999a29b67730/cf440/pic1.png 148w,
+/static/3832ed3127498fef5180999a29b67730/d2d38/pic1.png 295w,
+/static/3832ed3127498fef5180999a29b67730/249e6/pic1.png 520w&quot;
+        sizes=&quot;(max-width: 520px) 100vw, 520px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;On “Security and Login”, click the “Add” button in the “App passwords” of “Two-factor Authentication” region&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/49c7f3da3f3cd3f3f1c31186a26bba04/407fd/pic2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 82.48315688161694%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACd0lEQVQ4y3VTa2/UMBC8//9L4AMSAgkQVFCpPNWqQiBAutKjveTydN4P24mTYddJ7k7liDRaO7bHO7vjVRQLfP91i9/3AQJRIRI5XC9CEKVQukdvBphhxDCONqoRUAboemNheP0IqyRvcHvnQqQ5pDao6ho7z0csEjsuq8qiKEvUTQOtFBRD6wPUFIeBCNumRiJitG2DrtPgL00ShEGAKAz30fd9pFmGTnfQdFjPRFNUdF4S4YhVkab2EE9GksVZZGWNoqWNZkRHF3TjJJGzkFKdBpHaDIu0gLfzUBQF+q5DSxmkXy8RvHqC5OIl6g9nqD+fQ5Nsrmff9/+BmQjzSsLzA5RUo3EwqKni5c0a2dU5xPU51Lcr6O9XGJrKloNk4NTHZBNh2SAMI+qQ4d1EOCK5dyFvfkLerqE2a/R/1hjaeuYbT2JPmBU1RJJayUzKXaxkj8HSA2ZGTzVepP0DM9nHEqZ5QTbxkFEH+UDTtjTOkRPKorQdlFLaolt7HEHOsaWm1E07EwoBx3HIMp39wV8cx9hsNthRs5iMSRer8Hwqz6GePOdEWPpKWw81+1rwIssX5MWE0JCNWtpss5zJ2GJLzfgMK2MfWsKH3eLXwc8xjGLkJFnOkthr7ZHn5IMxS7eSl8yWDhq6LQgFXNe1/nS2jq2vfW6UIWfL0WZI2Y4UuVxVVR8yXAiXGma0uKPXI7hRtMQw49Tp4YQHezrfdr11xZ6Qb+If8sc1ts8eY/30Efw3z1F8fIv8/ZlFRihpXtHLsfj0DvLyAuWXC/ivX8CUxVGGTMrvVkSQzh2U70J5zhR95zCmKHdbyDl2wQ468FBv7zBohb/os9BM++8j4AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;The location is quite straightforward.&quot;
+        title=&quot;The location is quite straightforward.&quot;
+        src=&quot;/static/49c7f3da3f3cd3f3f1c31186a26bba04/b9e4f/pic2.png&quot;
+        srcset=&quot;/static/49c7f3da3f3cd3f3f1c31186a26bba04/cf440/pic2.png 148w,
+/static/49c7f3da3f3cd3f3f1c31186a26bba04/d2d38/pic2.png 295w,
+/static/49c7f3da3f3cd3f3f1c31186a26bba04/b9e4f/pic2.png 590w,
+/static/49c7f3da3f3cd3f3f1c31186a26bba04/f9b6a/pic2.png 885w,
+/static/49c7f3da3f3cd3f3f1c31186a26bba04/2d849/pic2.png 1180w,
+/static/49c7f3da3f3cd3f3f1c31186a26bba04/407fd/pic2.png 2078w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Click “Generate app passwords”&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a2b4be10dbd92bff9f72e2ecad8b0054/b1a9c/pic3.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.953020134228186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAFABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB2qFB/8QAFRABAQAAAAAAAAAAAAAAAAAAEEH/2gAIAQEAAQUCp//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAABD/2gAIAQEABj8Cf//EABkQAAIDAQAAAAAAAAAAAAAAAAERABAxYf/aAAgBAQABPyEbCi7X/9oADAMBAAIAAwAAABB4D//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ECf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxBn/8QAGBABAQEBAQAAAAAAAAAAAAAAAREAIVH/2gAIAQEAAT8QZHE7bhjWjzQ3/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic3&quot;
+        title=&quot;pic3&quot;
+        src=&quot;/static/a2b4be10dbd92bff9f72e2ecad8b0054/c739e/pic3.jpg&quot;
+        srcset=&quot;/static/a2b4be10dbd92bff9f72e2ecad8b0054/8ee9c/pic3.jpg 148w,
+/static/a2b4be10dbd92bff9f72e2ecad8b0054/ebbe7/pic3.jpg 295w,
+/static/a2b4be10dbd92bff9f72e2ecad8b0054/c739e/pic3.jpg 590w,
+/static/a2b4be10dbd92bff9f72e2ecad8b0054/5413e/pic3.jpg 885w,
+/static/a2b4be10dbd92bff9f72e2ecad8b0054/4efde/pic3.jpg 1180w,
+/static/a2b4be10dbd92bff9f72e2ecad8b0054/b1a9c/pic3.jpg 1490w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You are greeted with a small dialog. Go ahead. You have to type your password again before actually starting to create an app password.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/177d7002cc11b1862bff51a2e8565ebf/c2b8b/pic4.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.19239373601789%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAdq0rI0JGn//xAAaEAACAgMAAAAAAAAAAAAAAAAAAQIDEBES/9oACAEBAAEFAs6RY+RWSP/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AVf/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEv/aAAgBAgEBPwFL/8QAFxABAAMAAAAAAAAAAAAAAAAAEAAhMf/aAAgBAQAGPwKa0f/EABwQAAMAAgMBAAAAAAAAAAAAAAABEUGRIVFhgf/aAAgBAQABPyGXKR8iXHZ5DYhaJsaP/9oADAMBAAIAAwAAABDvz//EABYRAAMAAAAAAAAAAAAAAAAAAAABEf/aAAgBAwEBPxBuEH//xAAWEQEBAQAAAAAAAAAAAAAAAAABEQD/2gAIAQIBAT8QCs1b/8QAHRABAAICAgMAAAAAAAAAAAAAAQARIUExUWHh8f/aAAgBAQABPxAKboO/sp9MBDZ5EOescIbW7t1ELIzoT//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic4&quot;
+        title=&quot;pic4&quot;
+        src=&quot;/static/177d7002cc11b1862bff51a2e8565ebf/c739e/pic4.jpg&quot;
+        srcset=&quot;/static/177d7002cc11b1862bff51a2e8565ebf/8ee9c/pic4.jpg 148w,
+/static/177d7002cc11b1862bff51a2e8565ebf/ebbe7/pic4.jpg 295w,
+/static/177d7002cc11b1862bff51a2e8565ebf/c739e/pic4.jpg 590w,
+/static/177d7002cc11b1862bff51a2e8565ebf/5413e/pic4.jpg 885w,
+/static/177d7002cc11b1862bff51a2e8565ebf/c2b8b/pic4.jpg 894w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Type the identifier of your app password and click “Generate password”&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4eb469b5b7a107ce33bda7dba9a8bc3f/c2b8b/pic5.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.505592841163306%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgMF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAHtzdeNRE0f/8QAGxAAAQQDAAAAAAAAAAAAAAAAAAECAzEQERL/2gAIAQEAAQUC5KNtxLSH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BV//EABURAQEAAAAAAAAAAAAAAAAAAAAS/9oACAECAQE/AUv/xAAYEAACAwAAAAAAAAAAAAAAAAAAASAhMf/aAAgBAQAGPwIto1Q//8QAHBAAAQMFAAAAAAAAAAAAAAAAAAEQETFRYbHx/9oACAEBAAE/IZYFsB0G3lJ//9oADAMBAAIAAwAAABAv/wD/xAAWEQEBAQAAAAAAAAAAAAAAAAABECH/2gAIAQMBAT8QcI//xAAWEQEBAQAAAAAAAAAAAAAAAAABEQD/2gAIAQIBAT8QCs0b/8QAIBAAAQMCBwAAAAAAAAAAAAAAAQARMRAhYXGBobHB0f/aAAgBAQABPxC5G71MBxGNkDCbRTidqTNf/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic5&quot;
+        title=&quot;pic5&quot;
+        src=&quot;/static/4eb469b5b7a107ce33bda7dba9a8bc3f/c739e/pic5.jpg&quot;
+        srcset=&quot;/static/4eb469b5b7a107ce33bda7dba9a8bc3f/8ee9c/pic5.jpg 148w,
+/static/4eb469b5b7a107ce33bda7dba9a8bc3f/ebbe7/pic5.jpg 295w,
+/static/4eb469b5b7a107ce33bda7dba9a8bc3f/c739e/pic5.jpg 590w,
+/static/4eb469b5b7a107ce33bda7dba9a8bc3f/5413e/pic5.jpg 885w,
+/static/4eb469b5b7a107ce33bda7dba9a8bc3f/c2b8b/pic5.jpg 894w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Your app password has been generated! Note the password somewhere and keep it carefully because you won’t get to see it again!&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9ddcfa2a9dc431077d9b2f250a3f303b/b52c0/pic6.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 51.12107623318386%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAAByUlEQVQoz42SSW/TUBRG8zNZAH+lbBAr+AeIBWvUhoakiEpFTUsnSjPHdgaPmWecxE6c5HDzUnUBrcTi6HzXV+/qDY6ZlkOhWEYzKpQ0A02vKEplXdX9wZDhaKwYDEeKbR6NJw9s68lvn2qtTqzXH2LZLs1mC9t2JDs4rqdwvQbT2YwgXDAPQoJ75v8QsFhGak1sEw0IfZ1wWiPwKyxmNeYTQ7EKTDYLi3VYF8wnWQV1WNl0WzqxKHSpFw8xS1/RM4dUCym0fAo9n2TYuoRFmfW8wCZ4mm2fqEynkSG2NK+Z7j3D33shfo7/6iV4p4ANS10Gajs/xrYXGWLJkS4Dc7JD38TNxelo32iWjmgWj2hUT+h4F7SsM3qNS7qSu94PeuKmlabtnIvPGLSucKrfVWZtyMCs7DBwqJSTGNoxVf2YXCahjlwSZ272KWUTGHINuds42ZsD8uJtT8sl+XnxSb7Fubs+gLCwO/I6GhLN6yxnltjeObDlcUzBUiyVd/V64SqIhPUWTx5ETJdRX36bzQYehXv+qkdjn8lkgm6N+Hxqkzp3FIm0y9WdGviw9D+ARqtDu90k/cvl9ftb3n7M8E548yHDl5MifwAtZ9/pfYK6SAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic6&quot;
+        title=&quot;pic6&quot;
+        src=&quot;/static/9ddcfa2a9dc431077d9b2f250a3f303b/b9e4f/pic6.png&quot;
+        srcset=&quot;/static/9ddcfa2a9dc431077d9b2f250a3f303b/cf440/pic6.png 148w,
+/static/9ddcfa2a9dc431077d9b2f250a3f303b/d2d38/pic6.png 295w,
+/static/9ddcfa2a9dc431077d9b2f250a3f303b/b9e4f/pic6.png 590w,
+/static/9ddcfa2a9dc431077d9b2f250a3f303b/f9b6a/pic6.png 885w,
+/static/9ddcfa2a9dc431077d9b2f250a3f303b/b52c0/pic6.png 892w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;After that, log in to your Facebook account on the PSN link screen using your Facebook’s email and the app password as your password.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You won’t need to input one-time generated password and the login will be finished successfully!&lt;/p&gt;
+&lt;p&gt;Remember this trick and you don’t have to reach to your OTP device the next time you need to log in to your Facebook from other services!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Make money online with no experience story: How I made my first dollar on the Internet]]></title><description><![CDATA[Article available in English Besides my full-time job, I also looked for various ways to turn my leisure time to something that was at least…]]></description><link>https://tsukie.com/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</link><guid isPermaLink="false">https://tsukie.com/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</guid><pubDate>Fri, 24 May 2019 00:47:41 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Besides my full-time job, I also looked for various ways to turn my leisure time to something that was at least productive and fruitful to me. Though most of it became chilling time in front of anime or game or youtube shows, I have tried. Until now I still can’t make a living out of what I have tried, but at least I believe that I found the most suitable way for me to turn my free time to pennies, and I have fun doing it. Through my story, I hope that I can inspire you to forge your path of making money online. You might not make a lump sum out of it, but you will find the joy to discover that, the internet can give you more than just Facebook news feed or Netflix.&lt;/p&gt;
 &lt;h3&gt;1. Online stock&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://amzn.to/2Er9Wh6&quot;&gt;The millionaire next door&lt;/a&gt;&lt;/strong&gt; was the first book that changed my attitude towards making money, and &lt;strong&gt;&lt;a href=&quot;https://amzn.to/2Wm37Yf&quot;&gt;Rich dad poor dad&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&quot;https://amzn.to/2VZkqz5&quot;&gt;The richest man in Babylon&lt;/a&gt;&lt;/strong&gt; were the two books that ignited my determination to jump into the chaos of online stock market. I created an online account, buy the recommended stock education book on Amazon (I even turned all my learning into &lt;strong&gt;&lt;a href=&quot;https://tsukie.com/en/lifestyle/principal-indices-in-stock-analysis-for-long-term-investment/&quot;&gt;an article&lt;/a&gt;&lt;/strong&gt; and posted it on Medium…)
