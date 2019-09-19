@@ -1,252 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/how-to-link-your-psn-account-to-facebook-while-keeping-facebook-two-factor-authentication-on/</loc>
-    
-    <lastmod>2019-09-10T16:42:45.640Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com//404.html</loc>
-    
-    <lastmod>2019-08-28T15:02:34.505Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/how-to-have-unlimited-trial-time-for-jetbrains-products/</loc>
-    
-    <lastmod>2019-08-23T13:46:22.283Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</loc>
-    
-    <lastmod>2019-05-24T13:58:45.227Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/seo-prioritize-keyword-research-or-content-writing-insights-from-my-observations-and-results/</loc>
-    
-    <lastmod>2019-05-23T17:12:46.479Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/ja/jinsei-seikatsu/kabu-no-chokitoshi-no-shisubunseki/</loc>
-    
-    <lastmod>2019-05-23T17:09:36.102Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/mentality-to-fight-against-loneliness-and-depression/</loc>
-    
-    <lastmod>2019-05-23T17:04:49.351Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/principal-indices-in-stock-analysis-for-long-term-investment/</loc>
-    
-    <lastmod>2019-05-23T17:01:06.252Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/uncover-jailbreak-ios-12-random-respring-cause-and-solution-suggestion/</loc>
-    
-    <lastmod>2019-05-17T14:50:41.836Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/contact-us.html</loc>
-    
-    <lastmod>2019-04-10T13:26:58.060Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/what-is-humblebragging-why-it-is-obnoxious-and-how-to-avoid-it/</loc>
-    
-    <lastmod>2019-04-09T14:13:04.474Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/if-you-ever-feel-like-a-loser-tips-that-help-you-feel-better/</loc>
-    
-    <lastmod>2019-04-09T14:13:04.471Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/how-are-new-hire-software-programmers-expected-to-be/</loc>
-    
-    <lastmod>2019-04-09T14:13:04.470Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/</loc>
-    
-    <lastmod>2019-04-09T14:13:04.469Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/adding-non-php-libraries-to-a-laravel-project-with-composer/</loc>
-    
-    <lastmod>2019-04-09T14:13:04.468Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/vi/cong-nghe/li-do-ban-nen-viet-technical-blog-bang-tieng-anh/</loc>
-    
-    <lastmod>2019-02-13T14:44:31.454Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/terms-and-conditions.html</loc>
-    
-    <lastmod>2019-01-26T10:23:35.515Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/privacy-policy.html</loc>
-    
-    <lastmod>2019-01-26T10:23:35.514Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/</loc>
-    
-    <lastmod>2018-10-14T06:51:52.260Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/travel/tokyo-enjoying-good-food-without-blowing-the-budget-part-1/</loc>
-    
-    <lastmod>2018-09-10T14:25:38.263Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/reflections-on-trusting-trust/</loc>
-    
-    <lastmod>2018-09-09T02:48:31.975Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/my-5-circled-career-aspects-that-need-improvement/</loc>
-    
-    <lastmod>2018-09-09T02:34:23.562Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/technologies/costless-zero-configuration-hassle-free-website-ssl-service-by-cloudflare/</loc>
-    
-    <lastmod>2018-09-09T02:14:03.587Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/ja/jinsei-seikatsu/isu-monogatari/</loc>
-    
-    <lastmod>2018-08-29T14:05:58.810Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/vi/cong-nghe/cai-dat-ssl-cho-website-mien-phi-de-dang-nhanh-chong-voi-cloudflare-chi-vai-buoc-click-chuot/</loc>
-    
-    <lastmod>2018-08-29T14:05:58.793Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/ja/jinsei-seikatsu/afc-u23-senshuken-betonamu-sakka-o-koeru-mono-ni-natta-toki/</loc>
-    
-    <lastmod>2018-08-29T14:05:58.780Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/googlee1e3ed4981f080ed.html</loc>
-    
-    <lastmod>2018-08-29T14:03:58.857Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/vi/cuoc-song/cai-ghe/</loc>
-    
-    <lastmod>2018-01-13T16:06:30.000Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-  <url>
-    <loc>https://tsukie.com/en/lifestyle/the-chair/</loc>
-    
-    <lastmod>2018-01-13T16:06:30.000Z</lastmod>
-    
-    <changefreq>weekly</changefreq>
-  </url>
-  
-
-  <url>
-    <loc>https://tsukie.com/</loc>
-    <changefreq>daily</changefreq>
-  </url>
-
-  <url>
-    <loc>https://tsukie.com/vi/</loc>
-    <changefreq>daily</changefreq>
-  </url>
-
-  <url>
-    <loc>https://tsukie.com/ja/</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://tsukie.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/seo-prioritize-keyword-research-or-content-writing-insights-from-my-observations-and-results/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/uncover-jailbreak-ios-12-random-respring-cause-and-solution-suggestion/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/adding-non-php-libraries-to-a-laravel-project-with-composer/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/what-is-humblebragging-why-it-is-obnoxious-and-how-to-avoid-it/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/if-you-ever-feel-like-a-loser-tips-that-help-you-feel-better/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/cong-nghe/li-do-ban-nen-viet-technical-blog-bang-tieng-anh/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/effectively-manage-row-deletion-using-mysql-partitioning/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/i-only-realized-these-things-when-i-was-on-the-hospital-bed/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/travel/tokyo-enjoying-good-food-without-blowing-the-budget-part-1/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/mentality-to-fight-against-loneliness-and-depression/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/how-to-have-unlimited-trial-time-for-jetbrains-products/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/how-are-new-hire-software-programmers-expected-to-be/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/jinsei-seikatsu/kabu-no-chokitoshi-no-shisubunseki/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/principal-indices-in-stock-analysis-for-long-term-investment/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/my-5-circled-career-aspects-that-need-improvement/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/jinsei-seikatsu/afc-u23-senshuken-betonamu-sakka-o-koeru-mono-ni-natta-toki/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/cong-nghe/cai-dat-ssl-cho-website-mien-phi-de-dang-nhanh-chong-voi-cloudflare-chi-vai-buoc-click-chuot/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/costless-zero-configuration-hassle-free-website-ssl-service-by-cloudflare/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/jinsei-seikatsu/isu-monogatari/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/reflections-on-trusting-trust/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/cuoc-song/cai-ghe/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/lifestyle/the-chair/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/lifestyle</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/blogging</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/website</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/make-money-online</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/self-help</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/technologies</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/ios</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/hack</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/jailbreak</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/programming</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/software-development</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/php</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/laravel</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/two-cents</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/experience</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/mental</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/mysql</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/travel</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/food</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/ramen</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/tokyo</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/japan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/food-series</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/jetbrains</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/stock</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/trivia</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/hosting</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/cong-nghe</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/blogging</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/kinh-nghiem</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/website</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/hosting</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/cuoc-song</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/tags/tan-man</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/tags/jinsei-seikatsu</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/tags/kabu</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/tags/keiken</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/tags/zatsudan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/tags/supotsu</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>

@@ -1,12 +1,2 @@
 User-agent: *
-Disallow: /archives/
-Allow: /
-Allow: /categories/
-Allow: /tags/
-Allow: /en/
-Allow: /ja/
-Allow: /vi/
-Allow: /libs/
-Allow: /css/
-Allow: /js/
-Sitemap: https://tsukie.com/sitemap.xml
+Disallow:
