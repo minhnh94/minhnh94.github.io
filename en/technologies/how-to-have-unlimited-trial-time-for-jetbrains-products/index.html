@@ -51,16 +51,6 @@ Let’s get our hand dirty!</p>
 <p><figure class="md-figure"><img src="https://i.imgur.com/PiJrybj.png"><figcaption>They are here</figcaption></figure></p>
 <h3>3. Remove <code class="language-text">~/Library/Preferences/&lt;Your Jetbrains product name&gt;/options/options.xml</code> file</h3>
 <p>In the picture above, the <code class="language-text">options</code> folder and <code class="language-text">eval</code> folder are in the same parent folder.</p>
-<p><ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-3728474335881495"
-		     data-ad-slot="4325813506"
-		     data-ad-format="auto"
-		     data-full-width-responsive="true">
-</ins></p>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 <h3>4. Remove any Jetbrains related keys in <code class="language-text">~/Library/Preferences/com.apple.java.util.prefs.plist</code> file</h3>
 <p><figure class="md-figure"><img src="https://i.imgur.com/wa1akV9.png"><figcaption>Use an XML editor to remove the keys (I’m using XCode). Regular text editors don’t seem to be working. In the picture, the “JetbrainsUserIdOnMachine” and “JetBrains” nested key are the two to be removed.</figcaption></figure></p>
 <h3>5. Remove all JetBrains related plist files in <code class="language-text">~/Library/Preferences/</code></h3>
@@ -69,16 +59,6 @@ Let’s get our hand dirty!</p>
 <p>Open your host file (in MacOS the host file is located at <code class="language-text">/etc/hosts</code>). Append these two rows to your host file</p>
 <div class="gatsby-highlight" data-language="text"><pre style="counter-reset: linenumber NaN" class="language-text line-numbers"><code class="language-text">127.0.0.1 www.jetbrains.com
 127.0.0.1 plugins.jetbrains.com</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span></span></pre></div>
-<p><ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-3728474335881495"
-		     data-ad-slot="4325813506"
-		     data-ad-format="auto"
-		     data-full-width-responsive="true">
-</ins></p>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 <p>You can also use other applications to block your JetBrains product’s internet connection (note that the application you use must be able to block outgoing connections). In MacOS I’m using Little Snitch to do this job for me (you can use a demo version of Little Snitch because JetBrains products seem to only connect to their server the moment they are launched, no periodically initiated connections so the demo version will work fine).
 If you opt for using Little Snitch, the configuration might be tricky so I pasted my configuration here for you.</p>
 <p><figure class="md-figure"><img src="https://i.imgur.com/XGG3VkZ.png"><figcaption>You only need to block access to jetbrains.com domain</figcaption></figure>
