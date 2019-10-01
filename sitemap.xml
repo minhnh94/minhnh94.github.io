@@ -73,6 +73,12 @@
 <url> <loc>https://tsukie.com/ja/tags/zatsudan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/ja/tags/supotsu</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/privacy-policy</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/terms-and-conditions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/vi/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/privacy-policy</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/vi/terms-and-conditions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/ja/contact-us</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/privacy-policy</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/ja/terms-and-conditions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
