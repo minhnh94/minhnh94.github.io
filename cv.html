@@ -5,7 +5,19 @@
 		<title>Nguyen Hoang Minh</title>
 	</head>
 	<body>
-		<header>
+		<div id="navigator">
+			<a id="close-btn" onclick="closeNav()">&times;</a>
+			<a href="#experience" onclick="closeNav()">EXPERIENCE</a>
+			<a href="#projects" onclick="closeNav()">PROJECTS</a>
+			<a href="#education" onclick="closeNav()">EDUCATION</a>
+			<a href="#skills" onclick="closeNav()">SKILLS</a>
+			<a href="#certificates" onclick="closeNav()">CERTIFICATES</a>
+			<a href="#languages" onclick="closeNav()">LANGUAGES</a>
+		</div>
+		<header class="main">
+			<div id="navigator-btn">
+				<span onclick="openNav()">&#9776;</span>
+			</div>
 			<div id="name-title">
 				<h1>NGUYEN HOANG MINH</h1>
 				<h2>Software engineer</h2>
@@ -18,14 +30,14 @@
 				<p><strong><u>Location:</u></strong> Yokohama, Kanagawa, Japan</p>
 			</div>
 		</header>
-		<div id="container">
+		<div id="container" class="main">
 			<div id="left-col">
-				<div class="index">
+				<div class="index" id="experience">
 					<h3>Experience</h3>
 					<hr>
 					<div class="left-col-paragraph">
 						<h4>Back-end engineer</h4>
-						<h5>DMM GAMES</h5>
+						<h5>DMM GAMES Co.,Ltd</h5>
 						<h5>2017/9 - present</h5>
 
 						<ul><strong><u>Project: A multi-platform social game on DMM GAMES published in early
@@ -102,7 +114,7 @@
 
 					</div>
 				</div>
-				<div class="index">
+				<div class="index" id="projects">
 					<h3>Projects</h3>
 					<hr>
 					<div class="left-col-paragraph">
@@ -150,7 +162,7 @@
 
 					</div>
 				</div>
-				<div class="index">
+				<div class="index" id="education">
 					<h3>Education</h3>
 					<hr>
 					<div class="left-col-paragraph">
@@ -171,14 +183,14 @@
 					<h3>Personal information</h3>
 					<hr>
 					<div class="right-col-paragraph">
-						<p><strong><u>Email:</u></strong> minhnh.da@gmail.com</p>
+						<p style="padding-top: 10px"><strong><u>Email:</u></strong> minhnh.da@gmail.com</p>
 						<p><strong><u>Github:</u></strong> https://github.com/minhnh94</p>
 						<p><strong><u>LinkedIn:</u></strong> https://www.linkedin.com/in/minhnh94</p>
 						<p><strong><u>Mobile:</u></strong> +8180-7741-9108</p>
 						<p><strong><u>Location:</u></strong> Yokohama, Kanagawa, Japan</p>
 					</div>
 				</div>
-				<div class="index">
+				<div class="index" id="skills">
 					<h3>Skills</h3>
 					<hr>
 					<div class="right-col-paragraph">
@@ -191,7 +203,7 @@
 						<p>MacOS, Windows, Linux (Ubuntu, CentOS), Git</p>
 					</div>
 				</div>
-				<div class="index">
+				<div class="index" id="certificates">
 					<h3>Certificates</h3>
 					<hr>
 					<div class="right-col-paragraph">
@@ -199,7 +211,7 @@
 						JLPT N1
 					</div>
 				</div>
-				<div class="index">
+				<div class="index" id="languages">
 					<h3>Languages</h3>
 					<hr>
 					<div class="right-col-paragraph">
@@ -222,8 +234,9 @@
 		}
 
 		header {
-			background-color: #373D48;
-			color: white;
+			background-color: #373D48 !important;
+			color: white !important;
+			-webkit-print-color-adjust: exact;
 		}
 
 		h1, h2 {
@@ -240,15 +253,15 @@
 		}
 
 		#name-title {
-			padding: 10px;
+			padding: 20px;
 		}
 
 		#personal-info {
-			padding: 10px;
+			padding: 20px;
 		}
 
 		#left-col, #right-col {
-			padding: 10px 10px 0;
+			padding: 20px 20px 0;
 		}
 
 		.index {
@@ -259,7 +272,46 @@
 			display: none;
 		}
 
-		@media screen and (min-width: 769px) {
+		#navigator-btn {
+			padding: 20px 0 0 20px;
+			font-size: 40px;
+		}
+
+		#navigator {
+			height: 100%;
+			width: 0;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #111;
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+		}
+
+		#navigator a {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 25px;
+			color: #818181;
+			display: block;
+			transition: 0.3s;
+		}
+
+		#navigator #close-btn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px;
+			margin-left: 50px;
+		}
+
+		@media print, screen and (min-width: 769px) {
+			#navigator-btn, #navigator {
+				display: none;
+			}
+
 			header {
 				/*height: auto;*/
 				overflow: auto;
@@ -292,7 +344,8 @@
 			}
 
 			#right-col {
-				background-color: #F4F4F4;
+				background-color: #F4F4F4 !important;
+				-webkit-print-color-adjust: exact;
 				/*float: right;*/
 				display: table-cell;
 				width: 25%;
@@ -300,4 +353,13 @@
 			}
 		}
 	</style>
+	<script>
+			function openNav() {
+				document.getElementById("navigator").style.width = "250px"
+			}
+
+			function closeNav() {
+				document.getElementById("navigator").style.width = "0"
+			}
+	</script>
 </html>
