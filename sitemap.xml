@@ -5,6 +5,7 @@
 <url> <loc>https://tsukie.com/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/vi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/ja/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/en/technologies/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/en/technologies/migrating-from-hexo-to-gatsby-js-static-site-generator-a-right-choice/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/en/technologies/how-to-link-your-psn-account-to-facebook-while-keeping-facebook-two-factor-authentication-on/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/en/lifestyle/make-money-online-with-no-experience-story-how-i-made-my-first-dollar-on-the-internet/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -32,6 +33,9 @@
 <url> <loc>https://tsukie.com/en/lifestyle/the-chair/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/technologies</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/technologies2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/software-development</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/aws</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://tsukie.com/tags/certificate</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/website</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/programming</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -46,7 +50,6 @@
 <url> <loc>https://tsukie.com/tags/ios</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/hack</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/jailbreak</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://tsukie.com/tags/software-development</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/php</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/laravel</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://tsukie.com/tags/two-cents</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
