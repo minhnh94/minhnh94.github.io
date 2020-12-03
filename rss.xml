@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 30 Mar 2020 14:02:12 GMT</lastBuildDate><item><title><![CDATA[Get AWS Certified Solution Architect - Associate certificate with above 900 points: Effective learning materials and tips]]></title><description><![CDATA[Article available in English Taking the AWS-CSAA exam requires dedicated effort and a well-prepared learning plan. Fortunately, the AWS-CSAA…]]></description><link>https://tsukie.com/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/</link><guid isPermaLink="false">https://tsukie.com/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/</guid><pubDate>Sun, 15 Mar 2020 01:41:25 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 03 Dec 2020 13:09:38 GMT</lastBuildDate><item><title><![CDATA[iOS jailbreak random respring - Cause and solution]]></title><description><![CDATA[Article available in English Random respring on your jailbroken iOS device and you have no luck finding the root cause? Hopefully this…]]></description><link>https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</link><guid isPermaLink="false">https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</guid><pubDate>Thu, 03 Dec 2020 17:58:24 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/ios-jailbreak-random-respring-cause-and-solution/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Random respring on your jailbroken iOS device and you have no luck finding the root cause? Hopefully this article can provide you with the information or at least the method for you to narrow down and get rid of the cause!&lt;/p&gt;
+&lt;h3&gt;Causes and solutions&lt;/h3&gt;
+&lt;h4&gt;1. Jetsam crash&lt;/h4&gt;
+&lt;p&gt;Please don’t close the tab. Hear me out. I know “jetsam” doesn’t make much sense to some of you.
+In layman’s terms this is an iOS process to control memory and CPU usage, it terminates processes regularly to keep the resources healthy. Some tweaks may cause jetsam to kill processes more aggressively or create memory leak, which result in a respring.&lt;/p&gt;
+&lt;p&gt;Have you ever experienced random respring when you swipe bottom to return to app switcher, or grab the notification/control center, or run a certain app, do some certain actions? Yes that’s jetsam related.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/48d5b8f350275bfee6bfb8e8d8bfb76b/44dfd/pic1.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 177.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAkABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHlIgKjSAoDYGYP/8QAGxAAAQQDAAAAAAAAAAAAAAAAAQAQESAhMUH/2gAIAQEAAQUCaa8oBiEd/wD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/An//xAAdEAACAgIDAQAAAAAAAAAAAAAAARExEKEhQVGB/9oACAEBAAE/IbG20T9FEKtHWFMK9n1vCpHWEwI8ciw6P//aAAwDAQACAAMAAAAQEAYAc8//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EF//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EF//xAAgEAABAgYDAQAAAAAAAAAAAAABABEQIUFR0eExYZGB/9oACAEBAAE/EHIAl3PW0+C8hbadq9VQ9YIkPmPRiHwF8EXd0gChS20RPKltwII/IsMK8TegwhiC7Ff/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic1&quot;
+        title=&quot;pic1&quot;
+        src=&quot;/static/48d5b8f350275bfee6bfb8e8d8bfb76b/c739e/pic1.jpg&quot;
+        srcset=&quot;/static/48d5b8f350275bfee6bfb8e8d8bfb76b/8ee9c/pic1.jpg 148w,
+/static/48d5b8f350275bfee6bfb8e8d8bfb76b/ebbe7/pic1.jpg 295w,
+/static/48d5b8f350275bfee6bfb8e8d8bfb76b/c739e/pic1.jpg 590w,
+/static/48d5b8f350275bfee6bfb8e8d8bfb76b/5413e/pic1.jpg 885w,
+/static/48d5b8f350275bfee6bfb8e8d8bfb76b/4efde/pic1.jpg 1180w,
+/static/48d5b8f350275bfee6bfb8e8d8bfb76b/44dfd/pic1.jpg 1242w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+jetsam process termination logs (In Setting-&gt;Privacy-&gt;Analytics &amp;#x26; Improvements-&gt;Analytics Data, must have System Info tweak installed to view logs). After a random respring happened, look at here to check whether there’s a log created around that time. If it is, the cause is jetsam doing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⇨Solution:&lt;/strong&gt; So what? We have ways to prevent this from happening, and that’s exactly the way I’m using it on my device.&lt;/p&gt;
+&lt;p&gt;Install &lt;a href=&quot;https://chariz.com/get/stopcrashingpls&quot;&gt;StopCrashingPls&lt;/a&gt; to prevent tweaks from making jetsam angry. Also install &lt;a href=&quot;https://pheuxdev.github.io/repo/depictions/?p=fixrandomresprings&quot;&gt;FixRandomRespring&lt;/a&gt; to unlock iOS memory limitation mechanism so that jetsam can be happy and don’t mind memory problem. After finishing the install, reboot and re-jailbreak again to make sure the tweaks work. 100% working!&lt;/p&gt;
+&lt;h4&gt;2. Bad tweaks&lt;/h4&gt;
+&lt;p&gt;Ah, this again, you may lament. But do you know how to track down the culprit?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⇨Solution:&lt;/strong&gt; Install &lt;a href=&quot;https://repo.packix.com/package/com.muirey03.cr4shed/&quot;&gt;cr4shed&lt;/a&gt; so that you can have all the crash log and find out what is wreaking havoc.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 177.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAkABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMBAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB9lUY6GpLKpiYs6Ev/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAIREwESIiD/2gAIAQEAAQUC6wdEe7ELEN1K0mtDRD//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAEDAQE/AcqKRER//8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEREBL/2gAIAQIBAT8ByMjOmVn/xAAZEAADAQEBAAAAAAAAAAAAAAAAATKRMDH/2gAIAQEABj8C8WkreFLS1pSIRCJR/8QAIBAAAgIBAwUAAAAAAAAAAAAAAAERITEQIIFBUWFxwf/aAAgBAQABPyFvsM9QqUJUwiLs9bYHemEm4byN9rfA4/iJWF8H/9oADAMBAAIAAwAAABBTAgEED//EABgRAQEAAwAAAAAAAAAAAAAAAABhEBFR/9oACAEDAQE/EMWadSQf/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAFhEJH/2gAIAQIBAT8QyTIFX0sf/8QAIBABAAIBAgcAAAAAAAAAAAAAAQARITFBIGFxkaHR8f/aAAgBAQABPxC9DShpx2lli2bL1ABZO4QSnReBqJWBXSF1ngVAaNIjE+agticjCChSqnMvHwYbRGuBP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;pic2&quot;
+        title=&quot;pic2&quot;
+        src=&quot;/static/5cb1446a1c35ebf01b81ad141590f2a4/c739e/pic2.jpg&quot;
+        srcset=&quot;/static/5cb1446a1c35ebf01b81ad141590f2a4/8ee9c/pic2.jpg 148w,
+/static/5cb1446a1c35ebf01b81ad141590f2a4/ebbe7/pic2.jpg 295w,
+/static/5cb1446a1c35ebf01b81ad141590f2a4/c739e/pic2.jpg 590w,
+/static/5cb1446a1c35ebf01b81ad141590f2a4/5413e/pic2.jpg 885w,
+/static/5cb1446a1c35ebf01b81ad141590f2a4/4efde/pic2.jpg 1180w,
+/static/5cb1446a1c35ebf01b81ad141590f2a4/44dfd/pic2.jpg 1242w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+For example, cr4shed successfully captured a SpringBoard crash event caused by CustomPlayer tweak.
+Well, this is not really “random”, but you can get confused if you don’t know exactly what tweak is the problem.&lt;/p&gt;
+&lt;p&gt;These solutions should work with every kind of jailbreak, notably unc0ver, checkra1n and chimera. Try these and comment if this article helped you out!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Get AWS Certified Solution Architect - Associate certificate with above 900 points: Effective learning materials and tips]]></title><description><![CDATA[Article available in English Taking the AWS-CSAA exam requires dedicated effort and a well-prepared learning plan. Fortunately, the AWS-CSAA…]]></description><link>https://tsukie.com/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/</link><guid isPermaLink="false">https://tsukie.com/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/</guid><pubDate>Sun, 15 Mar 2020 01:41:25 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/get-aws-certified-solution-architect-associate-certificate-with-above-900-points-effective-learning-materials-and-tips/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Taking the AWS-CSAA exam requires dedicated effort and a well-prepared learning plan. Fortunately, the AWS-CSAA mostly tests your knowledge about architecture design, which many questions only need you to know the AWS services at a high level. If you already familiarized yourself with AWS’s most popular services (VPC, EC2, S3, EBS, RDS, ElastiCache…) and have hands-on experience with them, you can reduce the time you need to learn and review the knowledge related to the exam significantly.&lt;/p&gt;
 &lt;p&gt;My full-time work involves daily contact with well-known AWS services. Still, in the exam I encountered many questions which asked about other services I have never had any chances to put in practical use (like Snowball, DirectConnector, Elastic Beanstalk, Storage Gateway…). However, thanks to the best courses and mock exams on the Internet that money can buy, I was able to pass the exam with 900+ scores (pass baseline is 720).&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -384,35 +453,7 @@ Even now, there are not so many pages or posts that contain “jetbrains reset t
 &lt;p&gt;Google’s ranking algorithm is, when people search for something and find your website, if they navigate back shortly after visiting your website and look for the next result, Google will &lt;strong&gt;decrease your website ranking for that search result.&lt;/strong&gt; Trying to cheat the search engines won’t last you long. The worst thing is, &lt;strong&gt;your website might be flagged as spam and may even be removed from Google index.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;To avoid that, instead of trying to play around the algorithm, &lt;strong&gt;devote your effort to creating helpful content.&lt;/strong&gt; Eventually, Google will recognize your website and grant it an appropriate ranking.&lt;/p&gt;
 &lt;p&gt;And paying attention to technical SEO helps a lot too. Since this is much more measurable than keyword SEO and not quite hard to follow while providing visible results, you should consider doing it as thoroughly as you can. Use technical SEO audit tools like &lt;a href=&quot;https://www.woorank.com/&quot;&gt;https://www.woorank.com/&lt;/a&gt; to probe for potential technical flaws. &lt;a href=&quot;https://tsukie.com/en/technologies/costless-zero-configuration-hassle-free-website-ssl-service-by-cloudflare/&quot;&gt;Install SSL&lt;/a&gt;, get your website an AMP version, optimize resources, improve mobile-friendliness… will make your website look better and easy to analyze for Google search, thus resulting in better ranking.&lt;/p&gt;
-&lt;p&gt;Pushing your website to search engines’ page #1 is vital for your business, but providing real value to your users is a cornerstone to build up your stable, everlasting business. Blogging and content writing usually takes a very, very much time to be nurtured before they can bear fruit. Be patient, resilient, keep researching and applying what you have learned, and one day you will reap your deserved rewards.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[iOS 12 uncover jailbreak random respring - Cause and solution suggestion]]></title><description><![CDATA[Article available in English Many Reddit users have reported the random respring bug on their iOS 12 devices jailbroken by unc0ver. Some…]]></description><link>https://tsukie.com/uncover-jailbreak-ios-12-random-respring-cause-and-solution-suggestion/</link><guid isPermaLink="false">https://tsukie.com/uncover-jailbreak-ios-12-random-respring-cause-and-solution-suggestion/</guid><pubDate>Sat, 04 May 2019 17:58:24 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/uncover-jailbreak-ios-12-random-respring-cause-and-solution-suggestion/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Many Reddit users have reported the random respring bug on their iOS 12 devices jailbroken by unc0ver. Some users posted their devices’ crash logs, and the cause of random respring was assumed that the occupied memory was overflowed and caused the springboard to crash, leading to respring.&lt;/p&gt;
-&lt;p&gt;My iPhone 6S device respringed itself at least twice a day. Based on that theory, I have tried to find a solution to stop the random resprings on my device. For me, after many tries, the MiDevice tweak seemed to be the cause since it could change the springboard icon’s opacity and layout and make folder icon background as well as opened folder background become transparent. By disabling MiDevice tweak via iCleaner and using Boxy 3 instead, the random respring frequency apparently dropped significantly (Once per 2 days). Snowboard tweak was also reported as the random respring culprit, but under my observation, it was unlikely that Snowboard tweak was the cause (I uninstalled Snowboard, and the random respring bug still continued).&lt;/p&gt;
-&lt;h3&gt;But the ultimate solution was not that&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;md-figure&quot;&gt;&lt;img src=&quot;https://i.imgur.com/3VmUbv7.png&quot;&gt;&lt;figcaption&gt;unc0ver setting “Increase memory limit”&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;By turning on “Increase Memory Limit” and re-jailbreaking, my device hasn’t had any random resprings in the last 2 days with MiDevice installed! Perhaps the insufficient memory cause that led to respring theory was right after all.&lt;/p&gt;
-&lt;p&gt;I also didn’t use the status bar editing feature in MiDevice. There was an incompatible status bar modifier that caused my device to fall into safe mode before, and for extra safety, I refrained from using that feature.&lt;/p&gt;
-&lt;h3&gt;Conclusion: Random respring solution I have collected so far&lt;/h3&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot;
-     style=&quot;display:block; text-align:center;&quot;
-     data-ad-layout=&quot;in-article&quot;
-     data-ad-format=&quot;fluid&quot;
-     data-ad-client=&quot;ca-pub-3728474335881495&quot;
-     data-ad-slot=&quot;8217522326&quot;&gt;&lt;/ins&gt;&lt;/p&gt;
-&lt;script defer&gt;
-     (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;
-&lt;p&gt;I will sort the solution list by its relevance and importance.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Enable the “Increase Memory Limit” option in unc0ver, and re-jailbreak.&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;You might want to disable status bar editing tweaks or features temporarily. That might include many status bar modifiers such as Zeppelin, Alkaline… Disable them and observe for a few days to see whether the random respring frequency is reduced. For me, enabling the status bar modifier function in MiDevice caused the device to random respring at least twice per day. I turned it off and the device has run without fail for 3 days!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Uninstall all pirate tweaks and remove all pirate repositories in your device.&lt;/li&gt;
-&lt;li&gt;Use &lt;a href=&quot;https://www.reddit.com/r/jailbreak/comments/bczdif/release_snapback_beta_time_machine_for_ios/&quot;&gt;Snapback tweak&lt;/a&gt; to back up your installed tweaks, and then enable “Restore RootFS” function in unc0ver and re-jailbreak to return your device to newly jailbroken state. Then restore your installed tweaks via Snapback.&lt;/li&gt;
-&lt;li&gt;Try switching to &lt;a href=&quot;https://chimera.sh/&quot;&gt;Chimera jailbreak&lt;/a&gt;. Chimera comes with Sileo (a Cydia alternative), it has its own tweak installing mechanism which is different from Cydia substrate. Since Cydia substrate hasn’t been updated to support iOS 12 fully, it might be unstable and this might be the cause of random resprings. I tried switching to Chimera/Sileo and had not experienced any random resprings during that time. The reason I turned back to unc0ver is that Sileo tweak injecting mechanism doesn’t work well with some tweaks, for example, Youtube Tools or Safari Plus (I would like to cover the differences, as well as my personal experience between unc0ver and Chimera in a later article). If the tweaks you are using are compatible with Chimera/Sileo then you might want to permanently migrate to Chimera jailbreak (Use Snapback to backup your tweaks just in case you want to switch back to unc0ver).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Bonus&lt;/h3&gt;
-&lt;p&gt;Show off your home screen personalization. Here is mine!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/83aT9mL.jpg&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/vuAOzJk.jpg&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Adding non-PHP libraries to a Laravel project using Composer]]></title><description><![CDATA[Article available in English Adding a Javascript library to your project might require Javascript-related tools, like NodeJS, npm, Webpack…]]></description><link>https://tsukie.com/adding-non-php-libraries-to-a-laravel-project-with-composer/</link><guid isPermaLink="false">https://tsukie.com/adding-non-php-libraries-to-a-laravel-project-with-composer/</guid><pubDate>Tue, 09 Apr 2019 11:33:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/adding-non-php-libraries-to-a-laravel-project-with-composer/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pushing your website to search engines’ page #1 is vital for your business, but providing real value to your users is a cornerstone to build up your stable, everlasting business. Blogging and content writing usually takes a very, very much time to be nurtured before they can bear fruit. Be patient, resilient, keep researching and applying what you have learned, and one day you will reap your deserved rewards.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Adding non-PHP libraries to a Laravel project using Composer]]></title><description><![CDATA[Article available in English Adding a Javascript library to your project might require Javascript-related tools, like NodeJS, npm, Webpack…]]></description><link>https://tsukie.com/adding-non-php-libraries-to-a-laravel-project-with-composer/</link><guid isPermaLink="false">https://tsukie.com/adding-non-php-libraries-to-a-laravel-project-with-composer/</guid><pubDate>Tue, 09 Apr 2019 11:33:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/adding-non-php-libraries-to-a-laravel-project-with-composer/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Adding a Javascript library to your project might require Javascript-related tools, like NodeJS, npm, Webpack… But if your project happens to be using Laravel as web development framework, you can simply use Composer and Laravel built-in functions to add your new Javascript libraries, or libraries of any languages, to your existing project! Let’s figure out how we can do that.&lt;/p&gt;
 &lt;h3&gt;1. Add your library to your &lt;code class=&quot;language-text&quot;&gt;composer.json&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;First, check if your library is available on packagist.org. If it isn’t, we will make it available!
