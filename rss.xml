@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 03 Dec 2020 13:09:38 GMT</lastBuildDate><item><title><![CDATA[iOS jailbreak random respring - Cause and solution]]></title><description><![CDATA[Article available in English Random respring on your jailbroken iOS device and you have no luck finding the root cause? Hopefully this…]]></description><link>https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</link><guid isPermaLink="false">https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</guid><pubDate>Thu, 03 Dec 2020 17:58:24 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/ios-jailbreak-random-respring-cause-and-solution/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tsukie - Lifestyle, technologies, travel... and more]]></title><description><![CDATA[Tsukie - Blog from Tsukie studio. Written articles about lifestyles, technologies (mostly software programming related), travel (contents mostly Japan related), entertainment (anime, game, etc).]]></description><link>https://tsukie.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 14 Feb 2021 14:15:59 GMT</lastBuildDate><item><title><![CDATA[Debug Laravel artisan command in Docker with Xdebug and PHPStorm]]></title><description><![CDATA[Article available in English Find yourself having too many times adding and removing console output command just to inspect variables or…]]></description><link>https://tsukie.com/debug-laravel-artisan-command-in-docker-with-xdebug-and-phpstorm/</link><guid isPermaLink="false">https://tsukie.com/debug-laravel-artisan-command-in-docker-with-xdebug-and-phpstorm/</guid><pubDate>Sat, 13 Feb 2021 21:54:24 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/debug-laravel-artisan-command-in-docker-with-xdebug-and-phpstorm/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Find yourself having too many times adding and removing console output command just to inspect variables or process flow? Switch to step-by-step code execution, breakpoint-based debugging using IDE (PHPStorm) and XDebug to save time and your sanity. This article will guide you through how to achieve that with the context of a Laravel app in a Docker container and about debugging an Artisan command.&lt;/p&gt;
+&lt;h3&gt;1. Install Xdebug plugin for PHP and config Xdebug to play well on Docker&lt;/h3&gt;
+&lt;p&gt;Double-check if the PHP version installed in your Docker container already has Xdebug (by using command &lt;code class=&quot;language-text&quot;&gt;php -v&lt;/code&gt; and see if the output says anything about Xdebug). If you don’t already have Xdebug installed, you need to install it before continuing.&lt;/p&gt;
+&lt;p&gt;After installing Xdebug, create a file named &lt;code class=&quot;language-text&quot;&gt;xdebug.ini&lt;/code&gt; under &lt;code class=&quot;language-text&quot;&gt;/etc/php/conf.d/&lt;/code&gt; and save these lines into it:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-shell line-numbers&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;zend_extension&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xdebug.so
+xdebug.remote_enable&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+xdebug.remote_autostart&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+xdebug.idekey&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;PHPSTORM
+xdebug.remote_host&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;host.docker.internal
+xdebug.remote_port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9001&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# or any other arbitrary port&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next, &lt;code class=&quot;language-text&quot;&gt;docker-compose stop&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;docker-compose start&lt;/code&gt; (or if you don’t use docker-compose then it should be &lt;code class=&quot;language-text&quot;&gt;docker container stop&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;docker container start&lt;/code&gt; respectively) to restart the container and make the changes take effect.&lt;/p&gt;
+&lt;p&gt;Finally, verify that the PHP &gt; Debug section in your PHPStorm setting to make sure that the Xdebug port there points to the same port you defined in the &lt;code class=&quot;language-text&quot;&gt;xdebug.ini&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/719536e30631b0a249a0ee06623d8b39/9519f/xdebug_ide.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.20288548241659%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAAC50lEQVQ4y6VTTW/TQBSM1NCmQEtbkjhee722159ZOx9tUb+SQrm0N1RVQkJW/y4H7lSCH4EqQdQDrB+zLqVUcCPS6K2dZN68N7Otd1x13pwev91/uXd5sLdfHR4eVPP5cXV6dladnZ029fz8vLq4uKhevTqpToDXJyfV8XxezY6OqtlsVs1ns8ujo9lFkhWPW1tr674MAy0jSTKUxLlHYRjQ9u4LGk22SZVjyocF6ojiOKEkiSnPMpJSUhAEDcIwpMAXN+5gK2/hI6Mo/hbHMQ0Ggx+O3dec9XSWRHqnkDqPuC4ipvPY00mWaU/4um9ZmjF2h+82Y+Q51hdprxYNIbosTOet510t2PNaClbjud6dDOudcdbAnPMciPw6Cd3acRyAmaqZ45Bw7WtpP1a/CYuiMGPUwvfJ5zZFGC8vRpRkCmPinPhUpILGmUejTJDr2MSYQ4bQaQgHDwnLsjS7qAMQhsKhNM9pNN2mTCmcM8rSGLjdYYoao4khuiV07xV2VlelxzkUKtOxdl0HC3YpxtJHIFMgLlFFIMmFYS7nt3A5fs+o2eOfCjudjux2uwvjlhCi7vV6NBSMRmZMuD2UIaW+oJRZJDyOFNzjnwpXVlZkv99bpGlKnufVXRAqYdN+HtJkmNF0mFMRR83zeKSa+JTjCQ2x81tC9nuHkSFcXl4GYX9hsgR1UNgn7jLaUy5tTyc0mUyBCZWo5XjaVOQMI7sPRvZAGN4r7C98mIEc1hifzAhKwYghdmdcR7MQO40Q/jxLcI7IE4LMf0Csfym93tp8plrtdltag8HXCF3R7QdUattmOklTrcpSIz4Is9BBKHUShzqVnpZ4B5UNYNB327YJ+LKxsalaj9rtiKNLDjeNMVBJNvKlYkDljUoTEfOdxG0KoM4Ygn0bE5vzL0Nv1tfWytb6k6ec2+wDxv4EfLQs6+oOeP4Ld++x8ytchCsQfkT9jKv73vhhgt0GLMAD+H/AWlpaav8E2C1eR8beZ28AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;xdebug ide&quot;
+        title=&quot;xdebug ide&quot;
+        src=&quot;/static/719536e30631b0a249a0ee06623d8b39/b9e4f/xdebug_ide.png&quot;
+        srcset=&quot;/static/719536e30631b0a249a0ee06623d8b39/cf440/xdebug_ide.png 148w,
+/static/719536e30631b0a249a0ee06623d8b39/d2d38/xdebug_ide.png 295w,
+/static/719536e30631b0a249a0ee06623d8b39/b9e4f/xdebug_ide.png 590w,
+/static/719536e30631b0a249a0ee06623d8b39/f9b6a/xdebug_ide.png 885w,
+/static/719536e30631b0a249a0ee06623d8b39/2d849/xdebug_ide.png 1180w,
+/static/719536e30631b0a249a0ee06623d8b39/9519f/xdebug_ide.png 2218w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;2. Config the PHPStorm CLI interpreter&lt;/h3&gt;
+&lt;p&gt;This should be very straightforward. In the PHP section in PHPStorm setting, create a new CLI interpreter config from your docker/docker-compose setting. PHPStorm will import the settings and magically getting CLI interpreter configs into place.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bdcf26d8e307a08934ed2703c3f2e9e7/2b6fa/check_cli.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 74.17840375586854%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAACSElEQVQ4y52TyY7aQBRFLYaGVoMAg/Fs43nAbmjG7nxFpLBIfiBI2eQjEq+ST4hYZJkfbMkYv9xyQjZh0c3iyNar0q1376vilovFaj6bfZtG0dckjrM0mWaoZY/bx2y72fxlm23W62wxn2eLh4dsdn+fzRmz2ZkvqH2fJulbTtO0z2EYku/75HkeqapKUTyl7dMbWqzWNJs/UJreUxRFlEynFWyfaZpkGkaFAXzbJn+i/+JGo9HHEJsh9CwI41wWhVzXjdzxg1zDl+f5XBCEXFGUXBTFf7DamaEgPCcTk5aO/INDYc86tCyrGA6H5UQVKAo8etquKAh88oOQNF0nWVEI64QGLnE0DJNCWzlUgswOKBzHLg3Tgg0doi51O3fUarXo9va2ot1uX+TmpnUU+B4E5QMnSeI+SZBNkhTIsYQosdMcz6davU4cx72EYweHh07V4QiWAwwiLhBuqWAolmVTEEbUbDZfIdj5Y7nX6+3ZxJhlBF+ynNjUPGTXaDReL9jv9ytB2C0w6XI8HpMOQQvXoH6N4GAw2E8mE0w0KCBc4l5WGfqw3Gg0rxNkHTqOU8iyXMJ2ZTmIYmpckyEy2zuwB9HKMi5tqet66Xp+WavVSmx+Cce7u/OUx+O9ZVsE20eInXBJT6qmnRzXPfV5/tTpdk84/SIQOX/Zi8LTkw6cJiufTFUjSZYIlivYe2ZZotOLsDUbruI4ZlFVpGlKrmP95GRRtFRJfo8Xs8OEK9g/Ot0hjv841yVJ2kF0h8MZ71zX/YC3v/wNsoxSIdDceCwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;If you already configured the CLI before, you can see it here. Otherwise, the three-dot button (red-marked in the image) will help you configure your CLI that will be used during the debugging process.&quot;
+        title=&quot;If you already configured the CLI before, you can see it here. Otherwise, the three-dot button (red-marked in the image) will help you configure your CLI that will be used during the debugging process.&quot;
+        src=&quot;/static/bdcf26d8e307a08934ed2703c3f2e9e7/b9e4f/check_cli.png&quot;
+        srcset=&quot;/static/bdcf26d8e307a08934ed2703c3f2e9e7/cf440/check_cli.png 148w,
+/static/bdcf26d8e307a08934ed2703c3f2e9e7/d2d38/check_cli.png 295w,
+/static/bdcf26d8e307a08934ed2703c3f2e9e7/b9e4f/check_cli.png 590w,
+/static/bdcf26d8e307a08934ed2703c3f2e9e7/f9b6a/check_cli.png 885w,
+/static/bdcf26d8e307a08934ed2703c3f2e9e7/2d849/check_cli.png 1180w,
+/static/bdcf26d8e307a08934ed2703c3f2e9e7/2b6fa/check_cli.png 2130w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;If you already configured the CLI before, you can see it here. Otherwise, the three-dot button (red-marked in the image) will help you configure your CLI that will be used during the debugging process.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;If you opt to configure a new CLI, verify that the IDE correctly detects the interpreter executable and debugger availability status after configuration.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ba5583d71e94fe5a69357ad1299bbdfa/9a3e6/cli_conf.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.1880341880342%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsSAAALEgHS3X78AAADCElEQVQ4y6VU2W7TUBB1CyrN0qy2k9iJl3iNE6ep6AMC6pYmXRCEVz6Hf+ATWgnxNUioPPMHoPBa4zuccRYBrXjh4Whs3+szZ2bOvZIkSVtvX53vX8ynJ7Pp7Gg6PU1OX5wkFxfnycvLy+Ti/DyZz18nb+bz5OxslsywfjabJs+S0yQ5ep4cJ0eM4xcnJ08ODw93wCeVnkb+p8lBSJ7nZWEYUDQcUr/fJ9M0yXEcikcjGo/HFAQB+b5PvufT43FAk8k+xeOxmEwOKIqi74ose1KxvFvvqPKXeq1GlWol62gaeX5AhmlRq90mVVWpjdjpdEjDGiPfY2vUd5DUsoRl2dTtdn+US6VYKuwWaoqi3vCPiqL8lGVZ9B1HOK4rDMMQ3V5PWHZfgFC0Wq0cbUBV2wKJeE8WxzFXtCiXyyOpUCjUVUW5ARnJspLlhH2HVQobZSOzaDZlUa83gPoGzWaD14Xr+VkYRWTaTFhaEiorQoAJyXE9CqOh4IhyhNxsCqxtwEk5smq0INM0nbp6b1GpVP4kxMaMS+f+6d0u6bou9FXfdB1YPUM1oRV5xJ5sFRfVavUvhSCUFZUi36LhcCB4OH4QiiAcCD8IhB8un03TYmUiT7gixPtdQlaIAZFlGrldMJy8fPQJWEZOYlnWZuJap5MB7IJFrVa7j1BB/2IKBhHIXO7hxjZrrMtmn9qOmzlIgudFsVi8ZyjNBjl+TFG8T0EY5sqYlH/udXX0Ku9XTsgJHRwGF2bvGcbdKa8V2n0PcAgey8n4R9u2Qchl6jlhbvCl4mXJ7fay5F32oapuFHIc4OhFo5g8HDUmxebVpPUN8kmvpgx1ZFj2orK3N5JKxWJNVuTP7D/gFkihKgVpOoiGKYaSotwUClOQpyBJQZIiQR6BWz23kfGtyj6UtqS6qelfe/jYWalYZ2f04Lffwd9ctCBEf/kCYQwGA/JcNyuVSmO+bYqaor5TmvLHRqNxBVz/Czh210h6DcXXmD7jCjb6gPf329vbmqTuFLdA+gB49B/YBR7y3foLxRp4eTKjz/sAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;The CLI in the image was configured based on docker-compose.yml, with Xdebug correctly detected. If you don&amp;#39;t have any preconfigured CLI yet, create one from the plus symbol (red-marked), and import the Dockerfile/docker-compose.yml file when prompted.&quot;
+        title=&quot;The CLI in the image was configured based on docker-compose.yml, with Xdebug correctly detected. If you don&amp;#39;t have any preconfigured CLI yet, create one from the plus symbol (red-marked), and import the Dockerfile/docker-compose.yml file when prompted.&quot;
+        src=&quot;/static/ba5583d71e94fe5a69357ad1299bbdfa/b9e4f/cli_conf.png&quot;
+        srcset=&quot;/static/ba5583d71e94fe5a69357ad1299bbdfa/cf440/cli_conf.png 148w,
+/static/ba5583d71e94fe5a69357ad1299bbdfa/d2d38/cli_conf.png 295w,
+/static/ba5583d71e94fe5a69357ad1299bbdfa/b9e4f/cli_conf.png 590w,
+/static/ba5583d71e94fe5a69357ad1299bbdfa/f9b6a/cli_conf.png 885w,
+/static/ba5583d71e94fe5a69357ad1299bbdfa/2d849/cli_conf.png 1180w,
+/static/ba5583d71e94fe5a69357ad1299bbdfa/9a3e6/cli_conf.png 1872w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;The CLI in the image was configured based on docker-compose.yml, with Xdebug correctly detected. If you don’t have any preconfigured CLI yet, create one from the plus symbol (red-marked), and import the Dockerfile/docker-compose.yml file when prompted.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h3&gt;3. Setup debug configuration&lt;/h3&gt;
+&lt;p&gt;The last step to get your interactive debugger working is to open Run/Debug Configuration and create a new “PHP Script” configuration. Refer to the image below.&lt;/p&gt;
+&lt;p&gt;The “File” should point to your local machine’s Laravel artisan file.&lt;/p&gt;
+&lt;p&gt;In the “Arguments”, type in your artisan command’s parameters.&lt;/p&gt;
+&lt;p&gt;For the “Interpreter”, select the CLI that you have configured in step 2 above.&lt;/p&gt;
+&lt;p&gt;After finishing all the settings, apply and OK, and we’re good to go!&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/38cf3d322d9e730504bf94d1b9c25158/f27b6/debug_setting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.094128611369996%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsSAAALEgHS3X78AAABX0lEQVQoz22SCZKDIBBFvYOJEVR2AdEMYlxSzv3vNS2ZZEzGV11UQ/NZPiS3wYc5jOE2j77rOuec930YwjAM4zhO03QbhmvXQUD3vq5xfFru93leEt3o73Vp205whjHCGJeEMM4hyS7ZJZLnOUKoBKqqKIoyAknS2691WSijMAP6MIkxprUBMaiidBOfz+dT5JFkWSalSqAYR35raZoSQrQxAoqq5kIKqRgXGBcoHuwVFSHJY9UXoAdx41pCKUYoz9LicnJGKV59hORHYljy6nsIbSxchHMWQrDWQMIZfQYRQnyKATBD1bWqNeci2lOhzUewA8fkj6NjU2qsFUJSsJ0x8Q7fcSCGUXjtBnAuPrvv+/7Vuh2HOzNrG2uM0bKuNXi+33B/in93joYp8MrUrWayNkprcAEfcWAYis4A+WbPlhc7NuueJJKwsnjj8fvKKsYOKEkp4f9ruIzWX97/ACG+XlkE0P60AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;debug setting&quot;
+        title=&quot;debug setting&quot;
+        src=&quot;/static/38cf3d322d9e730504bf94d1b9c25158/b9e4f/debug_setting.png&quot;
+        srcset=&quot;/static/38cf3d322d9e730504bf94d1b9c25158/cf440/debug_setting.png 148w,
+/static/38cf3d322d9e730504bf94d1b9c25158/d2d38/debug_setting.png 295w,
+/static/38cf3d322d9e730504bf94d1b9c25158/b9e4f/debug_setting.png 590w,
+/static/38cf3d322d9e730504bf94d1b9c25158/f9b6a/debug_setting.png 885w,
+/static/38cf3d322d9e730504bf94d1b9c25158/2d849/debug_setting.png 1180w,
+/static/38cf3d322d9e730504bf94d1b9c25158/f27b6/debug_setting.png 2146w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;4. Set breakpoint, and start debugging process&lt;/h3&gt;
+&lt;p&gt;Refer to the image below. I created a simple artisan command for this article (in fact, the content is exactly what &lt;code class=&quot;language-text&quot;&gt;make:command&lt;/code&gt; generates, plus some dead simple code for demonstration). After setting a breakpoint (as arrow 1 in the image), pressing “Start debug” icon (as arrow 2) to start the debug session.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/40f3625f4972be0bbe50eef537488ea2/0638c/before_debug.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.66960352422907%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsSAAALEgHS3X78AAABfElEQVQ4y41SCU7EMAzsP7ZtfOZomh57CMQKCfH/R+GU5YZdRm7iShknY0+zHE/P07DPue1d71z7G3a7FlxXcmQfCrkEgIjM3IxJHw/T03k5rPN+PZV5ds7BTzjoeiveq6sbE4pyU0tIEEHP5MWHGK2kiNiK30AUCJUuf8Zv7JCKzHkdylRJwqqVSUTfuYgR4TV3gIO6xo7bhSVNYSwaYxp9zH47+QVG8giyJfROpg3eYCJqyuDQFOIPfK53Iatq0LiOx7jMHGNIapen7IkJ/8aFzBuiT9YrDV692gtMMiD+i6zip7QMabA2EwtsEhVBEW6QRezhsZLjHMpJYhaAeJX59dnCNkOwGTIlql0lvIG3btdx8zosh7EkmxtxNZh9V8NclrhvzHlRdJ9L8AOG3CP24G5G61yQrjky3Ts45/IwlDvkE9Cya9e2ux7zrnvAtgnWbRMN1T22bvGe/Bkmuphm2BxXA+AjvxU9YHq1p83Kv6FafVvpKsysQfAFc5iKzzduIpMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;before debug&quot;
+        title=&quot;before debug&quot;
+        src=&quot;/static/40f3625f4972be0bbe50eef537488ea2/b9e4f/before_debug.png&quot;
+        srcset=&quot;/static/40f3625f4972be0bbe50eef537488ea2/cf440/before_debug.png 148w,
+/static/40f3625f4972be0bbe50eef537488ea2/d2d38/before_debug.png 295w,
+/static/40f3625f4972be0bbe50eef537488ea2/b9e4f/before_debug.png 590w,
+/static/40f3625f4972be0bbe50eef537488ea2/f9b6a/before_debug.png 885w,
+/static/40f3625f4972be0bbe50eef537488ea2/2d849/before_debug.png 1180w,
+/static/40f3625f4972be0bbe50eef537488ea2/0638c/before_debug.png 2270w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The debugger should stop at the breakpoint, conveniently displays all variables’ values up to this step. From here, you can execute code step-by-step, continue executing the program until the next breakpoint or stop executing altogether. Much more elegant and time-saving than logging debug messages to the console, no?&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6d048d8854d01f9a2ba3098fe3abbc78/f42cd/after_debug.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 86.11599297012302%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsSAAALEgHS3X78AAABgElEQVQ4y51Si5KbMAz0N/RIKRCwLcmyjXm1Q0nu5qb3/39VmSTTmbRNe7ejMStbC2JlNX1bfwxxiaG5oL5F84tUVWN1N6TgmAms18YZC4gqRZ77sI4LDwP4wNGF5HzviFFITnsXBgaCtu10hmm1RrREqKwFAPQcfcgvZnbkEEn2ACkTyisC5Dq7Qx5mJwoRpXyMc4pJuChk1+yHsmZirukdzFXMfopLH+YwrhTSn2t/UzIaBblrlJ4kF3Jr7RGkpNN2CTqLkWjul2mcpQXh/yU2dt7Flim3PcTJxyEbZS3u5twHXIlUyJ8tXivx1swhvq7D25nPC51G3CK/JDr1sEXcekndc8LvkZ8TnXt3zkf2lNY3rwwABQaH4Eh8v5BLWLkQfwsZiwM1xzxdf4WMmX0e9mXi9CAE6mti7VxVVV/KUtb6PVAd4DY1U/6+77r2eDy2N5RleXgIxWi3UHs8ioH/rL4XB6o/PR2KQqI4vBOqbuqieDp8CKprO/Hp84fwEwn+foHPujq4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;after debug&quot;
+        title=&quot;after debug&quot;
+        src=&quot;/static/6d048d8854d01f9a2ba3098fe3abbc78/b9e4f/after_debug.png&quot;
+        srcset=&quot;/static/6d048d8854d01f9a2ba3098fe3abbc78/cf440/after_debug.png 148w,
+/static/6d048d8854d01f9a2ba3098fe3abbc78/d2d38/after_debug.png 295w,
+/static/6d048d8854d01f9a2ba3098fe3abbc78/b9e4f/after_debug.png 590w,
+/static/6d048d8854d01f9a2ba3098fe3abbc78/f9b6a/after_debug.png 885w,
+/static/6d048d8854d01f9a2ba3098fe3abbc78/2d849/after_debug.png 1180w,
+/static/6d048d8854d01f9a2ba3098fe3abbc78/f42cd/after_debug.png 2276w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I hope this can help your Laravel artisan CLI app debugging session in Docker and PHPStorm become easier and more enjoyable.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[iOS jailbreak random respring - Cause and solution]]></title><description><![CDATA[Article available in English Random respring on your jailbroken iOS device and you have no luck finding the root cause? Hopefully this…]]></description><link>https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</link><guid isPermaLink="false">https://tsukie.com/ios-jailbreak-random-respring-cause-and-solution/</guid><pubDate>Thu, 03 Dec 2020 17:58:24 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Article available in &lt;a href=&quot;/en/technologies/ios-jailbreak-random-respring-cause-and-solution/&quot;&gt;English&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Random respring on your jailbroken iOS device and you have no luck finding the root cause? Hopefully this article can provide you with the information or at least the method for you to narrow down and get rid of the cause!&lt;/p&gt;
 &lt;h3&gt;Causes and solutions&lt;/h3&gt;
 &lt;h4&gt;1. Jetsam crash&lt;/h4&gt;
@@ -7,7 +230,7 @@ In layman’s terms this is an iOS process to control memory and CPU usage, it t
 &lt;p&gt;Have you ever experienced random respring when you swipe bottom to return to app switcher, or grab the notification/control center, or run a certain app, do some certain actions? Yes that’s jetsam related.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -32,6 +255,7 @@ In layman’s terms this is an iOS process to control memory and CPU usage, it t
 /static/48d5b8f350275bfee6bfb8e8d8bfb76b/4efde/pic1.jpg 1180w,
 /static/48d5b8f350275bfee6bfb8e8d8bfb76b/44dfd/pic1.jpg 1242w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -44,7 +268,7 @@ jetsam process termination logs (In Setting-&gt;Privacy-&gt;Analytics &amp;#x26;
 &lt;p&gt;&lt;strong&gt;⇨Solution:&lt;/strong&gt; Install &lt;a href=&quot;https://repo.packix.com/package/com.muirey03.cr4shed/&quot;&gt;cr4shed&lt;/a&gt; so that you can have all the crash log and find out what is wreaking havoc.
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -62,6 +286,7 @@ jetsam process termination logs (In Setting-&gt;Privacy-&gt;Analytics &amp;#x26;
 /static/5cb1446a1c35ebf01b81ad141590f2a4/4efde/pic2.jpg 1180w,
 /static/5cb1446a1c35ebf01b81ad141590f2a4/44dfd/pic2.jpg 1242w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;
@@ -72,7 +297,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;p&gt;My full-time work involves daily contact with well-known AWS services. Still, in the exam I encountered many questions which asked about other services I have never had any chances to put in practical use (like Snowball, DirectConnector, Elastic Beanstalk, Storage Gateway…). However, thanks to the best courses and mock exams on the Internet that money can buy, I was able to pass the exam with 900+ scores (pass baseline is 720).&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -97,6 +322,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/1c205f6542c59e30d1fa258127cf10d3/4efde/pic1.jpg 1180w,
 /static/1c205f6542c59e30d1fa258127cf10d3/65f86/pic1.jpg 1506w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -194,9 +420,10 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;p&gt;If you have already enabled two-factor authentication on your Facebook account, you may encounter trouble when trying to link PSN account to your Facebook account on your PS3/PS4. Even though you typed your Facebook email, password, and the one-time generated password correctly, after clicking “Agree” button on the Terms of Services screen, the PS3/PS4 still displays that your email/password/one-time password input was wrong. This is believed to be Facebook’s bug on their services that some applications are unable to properly link to Facebook account with two-factor authentication set up.&lt;/p&gt;
 &lt;p&gt;Fortunately, the problem can be remedied with the newly implemented &lt;a href=&quot;https://www.facebook.com/help/249378535085386?helpref=popular_topics&quot;&gt;Facebook app password&lt;/a&gt;. Following the procedures below and you will be able to link your PSN account with Facebook without temporarily disabling Facebook’s two-factor authentication.&lt;/p&gt;
 &lt;h3&gt;Go to “Settings” on Facebook&lt;/h3&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 520px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 520px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -218,10 +445,13 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/3832ed3127498fef5180999a29b67730/d2d38/pic1.png 295w,
 /static/3832ed3127498fef5180999a29b67730/249e6/pic1.png 520w&quot;
         sizes=&quot;(max-width: 520px) 100vw, 520px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;It is in the drop down on the header.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;On “Security and Login”, click the “Add” button in the “App passwords” of “Two-factor Authentication” region&lt;/h3&gt;
 &lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot;
      style=&quot;display:block; text-align:center;&quot;
@@ -232,9 +462,10 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;script defer&gt;
      (adsbygoogle = window.adsbygoogle || []).push({});
 &lt;/script&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -259,14 +490,17 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/49c7f3da3f3cd3f3f1c31186a26bba04/2d849/pic2.png 1180w,
 /static/49c7f3da3f3cd3f3f1c31186a26bba04/407fd/pic2.png 2078w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;The location is quite straightforward.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;h3&gt;Click “Generate app passwords”&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -291,6 +525,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/a2b4be10dbd92bff9f72e2ecad8b0054/4efde/pic3.jpg 1180w,
 /static/a2b4be10dbd92bff9f72e2ecad8b0054/b1a9c/pic3.jpg 1490w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -298,7 +533,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;p&gt;You are greeted with a small dialog. Go ahead. You have to type your password again before actually starting to create an app password.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -322,6 +557,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/177d7002cc11b1862bff51a2e8565ebf/5413e/pic4.jpg 885w,
 /static/177d7002cc11b1862bff51a2e8565ebf/c2b8b/pic4.jpg 894w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -329,7 +565,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;h3&gt;Type the identifier of your app password and click “Generate password”&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -353,6 +589,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/4eb469b5b7a107ce33bda7dba9a8bc3f/5413e/pic5.jpg 885w,
 /static/4eb469b5b7a107ce33bda7dba9a8bc3f/c2b8b/pic5.jpg 894w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -360,7 +597,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 &lt;h3&gt;Your app password has been generated! Note the password somewhere and keep it carefully because you won’t get to see it again!&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -384,6 +621,7 @@ Well, this is not really “random”, but you can get confused if you don’t k
 /static/9ddcfa2a9dc431077d9b2f250a3f303b/f9b6a/pic6.png 885w,
 /static/9ddcfa2a9dc431077d9b2f250a3f303b/b52c0/pic6.png 892w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -861,7 +1099,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;多分ご存知でしょう、ベトナムは不満を訴える人が少ない国ではないようです。特に、まだ十分に世を知らない人たちである若者は頻繁に訴えます。口頭でとか、ネット上で、SNSでとか等。自分の国に皮肉な名前（天堂、東ラオス、南支那…）をつけつつ、不満ばかりを訴えている若者たち。ですが、この一週間ではまるで、みんなは一つとなり、U23ベトナムチームに向かって全力で応援するようになったような気がします。旧正月よりも、みんなは共有の幸せで楽しんでいる様子となりました。まるで、日常生活での苦労、疲れ、悲しみ全てがよそに、幸せが一つだけ残ったという様子でありました。共通の雰囲気、共通の調和に溶け込んでいたような。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -884,13 +1122,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/0cf084f37feadda65a9e975bba4d8cc4/c739e/pic1.jpg 590w,
 /static/0cf084f37feadda65a9e975bba4d8cc4/67d4f/pic1.jpg 700w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -913,13 +1152,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/14eecd5fdf8d1f9b45ae5dee0e729a6e/c739e/pic2.jpg 590w,
 /static/14eecd5fdf8d1f9b45ae5dee0e729a6e/67d4f/pic2.jpg 700w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -942,13 +1183,17 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/df34945db218ffa0b3906b421a9c2f6a/c739e/pic3.jpg 590w,
 /static/df34945db218ffa0b3906b421a9c2f6a/67d4f/pic3.jpg 700w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;ホーチミン市、ハノイ都で応援する人たちが混んでいる&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -971,13 +1216,16 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/6a2b0369e20053f4e5f5c43fa93c5e68/c739e/pic4.jpg 590w,
 /static/6a2b0369e20053f4e5f5c43fa93c5e68/67d4f/pic4.jpg 700w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;知り合いじゃない人たちも親しく手を組んで「越南無敵」と叫んでいる&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1000,13 +1248,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/14842f825a48502ef850a05d519c50f7/c739e/pic5.jpg 590w,
 /static/14842f825a48502ef850a05d519c50f7/82472/pic5.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1029,16 +1279,20 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/f8775b012264829a37b53cfbcb9c02b1/c739e/pic6.jpg 590w,
 /static/f8775b012264829a37b53cfbcb9c02b1/82472/pic6.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;熱い雰囲気に冷たい水を注ぎたくなく、交通警察も違反者を無視してあげている&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;もしかしたらこの時は、１００年に１回だけ起きる奇跡なんだと人民は思います。準々決勝、準決勝でベトナムチームは予想外により強いチームに勝ち抜きました。その奇跡は、ベトナム人民の眠っているサッカーの愛を起こしました。サッカーに全く興味のない人たち、年齢を問わず、みんなは道路に舞い降り、知り合いのない人たちは仲間同士になるように、みんなわいわいしていました。&lt;/p&gt;
 &lt;p&gt;これは、サッカーを超えるものとなりました。もう愛国心になったと言われていました。
 奇跡は、みんなを繋げていました。&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1061,13 +1315,17 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/52de725425a03781bdd436961f42c73b/c739e/pic7.jpg 590w,
 /static/52de725425a03781bdd436961f42c73b/7fd22/pic7.jpg 768w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;このような景色は、どこの国にとっても珍しいはず&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1091,14 +1349,18 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/66a28220185ef2288c23258c1166425d/5413e/pic8.jpg 885w,
 /static/66a28220185ef2288c23258c1166425d/96f4b/pic8.jpg 980w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;ハノイ都も勝利の祝いの雰囲気が溢れている&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;そして昨日、ベトナム対ウズベキスタン決勝戦にあたり、応援する人たちは大変忙しい１日がありました。みんなはベトナムチームは優勝すると絶対に信じています。ミーディン国歌競技場で熱い応援の火が強く燃え上がっています。奇跡がもう一度起きることを期待しています。本当に、もし優勝したら、全国が爆発することに至るくらいです。&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1121,13 +1383,16 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/8b671ba8e1d9fd927552278f45d74116/b9e4f/pic9.png 590w,
 /static/8b671ba8e1d9fd927552278f45d74116/e49a9/pic9.png 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;国家競技場は真っ赤の色に染められている&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1150,13 +1415,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/a6a3902e9e23d4daf3594844ef29237b/b9e4f/pic12.png 590w,
 /static/a6a3902e9e23d4daf3594844ef29237b/e49a9/pic12.png 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1179,13 +1446,16 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/08a1abfef76baa261593dca45b5d1f8b/b9e4f/pic13.png 590w,
 /static/08a1abfef76baa261593dca45b5d1f8b/e49a9/pic13.png 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;決勝戦が始まるのを待っている&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1208,13 +1478,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/ffd1555c833836ce46526b5c005c73ac/b9e4f/pic10.png 590w,
 /static/ffd1555c833836ce46526b5c005c73ac/e49a9/pic10.png 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1237,18 +1509,22 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/d29ad03928e729ebd569884c4ef79945/b9e4f/pic11.png 590w,
 /static/d29ad03928e729ebd569884c4ef79945/e49a9/pic11.png 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;1-1にし引き分け状態にしたゴールの祝い景色&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;全国は優勝を待っています。ベトナムチームは一位になると思い込んでいます。
 なのに、今回勝利女神はベトナムチームに向かわなかったのです。
 １１９分目にウズベキスタンの選手によるゴールは引き分け状態を崩し、ベトナム全国の人民の期待を崩壊させてしまいました。
 全国、だと言っても言い過ぎではないと思います。
 残りの１分はやはり逆転を起こすことはきつすぎるでしょう。そのゴールでベトナムチームはウズベキスタンに優勝を譲らざるを得なくなりました。&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1271,13 +1547,16 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/858f8a10bb67262cefb305aac7ddb52d/c739e/pic14.jpg 590w,
 /static/858f8a10bb67262cefb305aac7ddb52d/82472/pic14.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;もうーだめだー&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1300,13 +1579,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/583c9e969368a7b11fe0fc7a9bc43679/c739e/pic15.jpg 590w,
 /static/583c9e969368a7b11fe0fc7a9bc43679/82472/pic15.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1329,16 +1610,19 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/4cd1a91536ebcf475d03e39205be4053/c739e/pic16.jpg 590w,
 /static/4cd1a91536ebcf475d03e39205be4053/82472/pic16.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;勝利のドアの前に倒れた時のしんーとした空気&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;数年前もし国家チームが負けたらすぐに批難、皮肉を受けるはずでした。
 しかし、今回は誰も責めない。批判しない。批難もない。「お疲れ様」、「がんばったね」、「よくできたね」…など優しい言葉で慰め合いました。みんなは知っている、ここまでたどり着くために、ベトナムチームは２倍、３倍の自分の力を絞り尽くさなければならないことを。
 なんと美しいでしょう。&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1361,13 +1645,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/73b3cd5788d9d757531123dbbc20ee14/c739e/pic17.jpg 590w,
 /static/73b3cd5788d9d757531123dbbc20ee14/a111b/pic17.jpg 650w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1390,13 +1676,17 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/e1cf8c915255c4945914db72ac6f9c8b/c739e/pic18.jpg 590w,
 /static/e1cf8c915255c4945914db72ac6f9c8b/9fa68/pic18.jpg 660w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;今朝からノイバイ国際空港まで国家チームを迎えに行く人海&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1419,13 +1709,16 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/356e3232fa96373bec6d9a33d249d1ea/c739e/pic19.jpg 590w,
 /static/356e3232fa96373bec6d9a33d249d1ea/e2288/pic19.jpg 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;ベトナムの英雄たちが降臨する時を待っている&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1448,13 +1741,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/ed4ab01a8940d345058c75578dd36a28/c739e/pic20.jpg 590w,
 /static/ed4ab01a8940d345058c75578dd36a28/9fa68/pic20.jpg 660w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1477,13 +1771,15 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/89d8834b4c7a17d0c79cb8b90cbea3fa/c739e/pic21.jpg 590w,
 /static/89d8834b4c7a17d0c79cb8b90cbea3fa/e2288/pic21.jpg 640w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
-&lt;span
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1506,10 +1802,13 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/09903e3b54a8b5a29dffb38d275cef96/c739e/pic22.jpg 590w,
 /static/09903e3b54a8b5a29dffb38d275cef96/9fa68/pic22.jpg 660w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;「一位を取ることができなかったが、みんなの心のなかでずっとチャンピオンだ！」&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;生まれた時からこんなにみんなが結束する景色を見るなんて、やはりこの世はまだ知らないことがたくさんあると認識してしまいました。
 ただボールが転がるだけじゃない。ただサッカーだけじゃない。すでにサッカー以上のものになった、サッカーを超えるもの、みたいな気がします。
 みんながボールとともに嬉しくて、寂しくて、この一週間は確かに、ベトナム人にとっては一生味わうことができないことが味わえました。全国同一になったことはきっと、これからもみんなの印象に残り続けるでしょう。&lt;/p&gt;
@@ -1522,9 +1821,10 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;ul&gt;
 &lt;li&gt;Tuy người dùng chẳng quan tâm đến việc SSL làm cái gì, nhưng việc họ nhìn thấy có icon hình cái khóa màu xanh ở thanh address khi vào website của bạn sẽ khiến họ yên tâm hơn khi truy cập. Nói chung người dùng yên tâm rồi thì làm các thứ cũng sẽ dễ dàng hơn.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 323px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 323px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1546,13 +1846,17 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/6edde7c9cceb4d12f42f3c5f7d7cf94c/d2d38/pic1.png 295w,
 /static/6edde7c9cceb4d12f42f3c5f7d7cf94c/f00c5/pic1.png 323w&quot;
         sizes=&quot;(max-width: 323px) 100vw, 323px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;Nhìn rất uy tín và đẹp trai, có cả tên công ty hiện lên nữa.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 317px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 317px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1574,10 +1878,13 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/303ac80da895409768d5abfce03d0712/d2d38/pic2.png 295w,
 /static/303ac80da895409768d5abfce03d0712/2970d/pic2.png 317w&quot;
         sizes=&quot;(max-width: 317px) 100vw, 317px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;Trông không được ổn lắm đúng không? Không ổn lắm thì viết hay mấy cũng chắc gì người ta tin?&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Lợi ích lớn lao hơn: SSL sẽ có ảnh hưởng đến thứ tự SEO của website, dù không lớn lắm. Nếu bạn quan tâm đến SEO cho website của mình thì bất kì cái gì có thể làm tăng rank cho website của bạn trên google search đều đáng thử đúng không?&lt;/li&gt;
 &lt;/ul&gt;
@@ -1586,9 +1893,10 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Trước kia để cài đặt SSL, bạn phải có chứng chỉ SSL (SSL certificate) được cấp từ các công ty bảo mật lớn như Symantec, VeriSign… các kiểu. Và chúng không rẻ, loại rẻ nhất cũng bay của bạn khoảng vài trăm nghìn 1 tháng. Nhưng bây giờ thì cũng dễ hơn nhiều rồi. Đủ các loại nhà cung cấp với giá thành hạ dần đến mức rẻ gần như các loại hosting domain bán giá của năm đầu tiên. Và còn có cả SSL miễn phí nữa như Let’s encrypt. Nếu SSL chỉ để website của mình khi truy cập có hiện cái khóa màu xanh, và giúp ích cho SEO một tí, thì cứ cái nào rẻ nhất hoặc không tốn tiền thì chọn thôi nhỉ.&lt;/p&gt;
 &lt;p&gt;Tuy nhiên, nếu bạn có chọn dùng SSL miễn phí như Let’s encrypt kia, thì cài đặt nó cũng không dễ gì với đa số mọi người khi phải học cách setup server, chỉnh config, tạo certificate… Chưa kể cách cài đặt còn phụ thuộc vào server của bạn là gì, website của bạn kiểu gì… Nếu cài đặt máy móc không phải là sở trường của bạn, thì mình thấy là công việc này sẽ không vui lắm đâu.&lt;/p&gt;
 &lt;p&gt;Thay vào đó, bạn hãy thử cân nhắc &lt;a href=&quot;https://www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt; xem. Mọi cài đặt chỉ diễn ra trên browser có kết nối internet của bạn, và thao tác cài đặt chỉ vài bước. Và nó cũng miễn phí, free hoàn toàn! Thêm vào đó, ngoài việc website của bạn được cài đặt SSL, bạn còn có free 1 loạt các tool khác như chặn DDoS, analytic (không được bằng google analytic nhưng cũng tạm)… nói chung nhiều và chắc mình cũng chẳng cần dùng hết. Trong lúc cài đặt, website của bạn sẽ không down tí nào, và nếu không muốn dùng nữa thì chỉ việc gỡ cài đặt ra là xong.&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1612,10 +1920,13 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/159c2c458b41cffcb3102a3f4fcde5c9/f9b6a/pic3.png 885w,
 /static/159c2c458b41cffcb3102a3f4fcde5c9/1026c/pic3.png 966w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;Nếu thích bạn có thể nâng cấp dịch vụ, nhưng cá nhân mình thấy free là quá thừa rồi.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;Nghe có vẻ ngon nghẻ easy, thử chẳng mất gì lại được lợi, vậy cài thôi nhỉ?&lt;/p&gt;
 &lt;h2&gt;Cài đặt SSL với Cloudflare&lt;/h2&gt;
 &lt;ol&gt;
@@ -1623,7 +1934,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;/ol&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1648,6 +1959,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/4fab0f1b8f262997aa4f01946e8f5cd6/2d849/pic4.png 1180w,
 /static/4fab0f1b8f262997aa4f01946e8f5cd6/bb7a5/pic4.png 2016w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1655,7 +1967,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Gõ link website vào và bấm scan. Đợi 1 lúc.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 587px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 587px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1677,6 +1989,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/40d1b72b0a51758f11dcfe4cf3eb42eb/d2d38/pic5.png 295w,
 /static/40d1b72b0a51758f11dcfe4cf3eb42eb/6068f/pic5.png 587w&quot;
         sizes=&quot;(max-width: 587px) 100vw, 587px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1684,7 +1997,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Đừng sợ khi thấy có nhiều setting làm choáng ngợp. Cứ bấm Continue thôi.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1707,6 +2020,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/25da641d6987d9dd2836e2d8d8ca9425/b9e4f/pic6.png 590w,
 /static/25da641d6987d9dd2836e2d8d8ca9425/64a7b/pic6.png 801w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1714,7 +2028,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Free thôi nghĩ ngợi gì nhiều.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1737,6 +2051,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/a10bb4db45dd5f5e3d883a57283fc65f/b9e4f/pic7.png 590w,
 /static/a10bb4db45dd5f5e3d883a57283fc65f/ccfda/pic7.png 796w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1745,7 +2060,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Đổi xong rồi bấm Continue (bấm trước đổi sau cũng không vấn đề).&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1768,6 +2083,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/798bb5eddc9d16a930f401ffb416ec88/b9e4f/pic8.png 590w,
 /static/798bb5eddc9d16a930f401ffb416ec88/8ff1e/pic8.png 800w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1775,7 +2091,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Chọn Crypto ở thanh công cụ trên cùng và check lại xem SSL status là Full hay Flexible chưa (Cái nào cũng được, Full nghe có vẻ to nên mình dùng Full).&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1798,6 +2114,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/dc59ce1f1411d1ce47adf1392870ab29/b9e4f/pic9.png 590w,
 /static/dc59ce1f1411d1ce47adf1392870ab29/00189/pic9.png 792w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1812,9 +2129,10 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;ul&gt;
 &lt;li&gt;End users will be shown a green lock and a title saying that the website they are accessing is safe. Though most of them don’t know and will not mind what the heck SSL is doing in the background, the green lock and the notice will reassure them that they will be unlikely to face any troubles caused by security compromise just by visiting your website.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 323px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 323px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1836,13 +2154,17 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/6edde7c9cceb4d12f42f3c5f7d7cf94c/d2d38/pic1.png 295w,
 /static/6edde7c9cceb4d12f42f3c5f7d7cf94c/f00c5/pic1.png 323w&quot;
         sizes=&quot;(max-width: 323px) 100vw, 323px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;A green lock means security, and a public corporation’s name gains end-users’ trust much easier&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 317px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 317px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1864,10 +2186,13 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/303ac80da895409768d5abfce03d0712/d2d38/pic2.png 295w,
 /static/303ac80da895409768d5abfce03d0712/2970d/pic2.png 317w&quot;
         sizes=&quot;(max-width: 317px) 100vw, 317px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;Not so cool, huh&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;According to some internet rumors, having an SSL certificate on your website can affect your ranking on major search engines, especially Google. If you prioritize SEO then being secured by SSL may help you gain a notable advantage against your competitors when it comes to ranking on search engines.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1876,9 +2201,10 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Currently, SSL certificates can be distributed at a much more affordable price than years ago, as most domain providers now also have their own SSL provision. If you don’t choose your domain provider as your SSL provider, there are also a variety of SSL providers worldwide. If you don’t run seriously critical business that handling millions of your clients’ confidential data, then just go with the provider offering the cheapest price since all we need is a tiny green lock displayed on the end user’s browsing address and a better ranking on Google.&lt;/p&gt;
 &lt;p&gt;Yet, even after acquiring an SSL certificate successfully, installing it on the server may seems daunting for beginners and even experts. You may stumble at any steps of CSR creation, bundling certificates, binding to your website, editing host configuration files, etc.. Also, the way to set up an SSL certificate may vary according to the SSL providers and webserver types.&lt;/p&gt;
 &lt;p&gt;That’s when &lt;a href=&quot;https://www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt; service comes to rescue! Cloudflare service offers zero-configuration, browser-based setup procedure for implementing SSL, and on top of that, it is FREE! For bloggers, writers, pennies per month just to maintain a tiny green lock on users’ browsers is overpriced, therefore a free option is obviously better! After registering with Cloudflare, you are not only provided with free SSL certificate, but also tons of helpful services like analytics, DDoS protection, cache management… and they are free too! Of course they also offer premium plans if you are willing to pay for more advanced services, but in this article we will stick with the free plan since it fully covers our needs here - a working SSL certificate.&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1902,10 +2228,13 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/159c2c458b41cffcb3102a3f4fcde5c9/f9b6a/pic3.png 885w,
 /static/159c2c458b41cffcb3102a3f4fcde5c9/1026c/pic3.png 966w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;&lt;p&gt;Plan comparison chart from Cloudflare. For a personal blog, the Free plan gets you covered quite nicely.&lt;/p&gt;&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;I will not go into details of why Cloudflare can offer SSL certificates for free, please find it in other articles.&lt;/p&gt;
 &lt;h2&gt;Procedure to have your website secured by Cloudflare&lt;/h2&gt;
 &lt;ol&gt;
@@ -1913,7 +2242,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;/ol&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1938,6 +2267,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/4fab0f1b8f262997aa4f01946e8f5cd6/2d849/pic4.png 1180w,
 /static/4fab0f1b8f262997aa4f01946e8f5cd6/bb7a5/pic4.png 2016w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1945,7 +2275,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;From here, type your website domain in the address bar and hit Scan. While the server is gathering required information you will be welcomed with a video showing how Cloudflare SSL works.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 587px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 587px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1967,6 +2297,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/40d1b72b0a51758f11dcfe4cf3eb42eb/d2d38/pic5.png 295w,
 /static/40d1b72b0a51758f11dcfe4cf3eb42eb/6068f/pic5.png 587w&quot;
         sizes=&quot;(max-width: 587px) 100vw, 587px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -1974,7 +2305,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;After a while, you will be taken to the next screen, where your website’s DNS records are shown. Typically, if your site is already up and currently running, just ignore these settings and hit Continue.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -1997,6 +2328,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/25da641d6987d9dd2836e2d8d8ca9425/b9e4f/pic6.png 590w,
 /static/25da641d6987d9dd2836e2d8d8ca9425/64a7b/pic6.png 801w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2004,7 +2336,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;The next screen is a table of offered service plans. Choose Free website and continue, you can always upgrade to a higher tier plan later.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2027,6 +2359,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/a10bb4db45dd5f5e3d883a57283fc65f/b9e4f/pic7.png 590w,
 /static/a10bb4db45dd5f5e3d883a57283fc65f/ccfda/pic7.png 796w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2035,7 +2368,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Press Continue when you finished changing your nameservers.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2058,6 +2391,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/798bb5eddc9d16a930f401ffb416ec88/b9e4f/pic8.png 590w,
 /static/798bb5eddc9d16a930f401ffb416ec88/8ff1e/pic8.png 800w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2065,7 +2399,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;From now on you will be working with the dashboard. Select Crypto from the toolbar menu and verify that SSL status is set to Full or Flexible (I am using Full though).&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2088,6 +2422,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/dc59ce1f1411d1ce47adf1392870ab29/b9e4f/pic9.png 590w,
 /static/dc59ce1f1411d1ce47adf1392870ab29/00189/pic9.png 792w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2104,7 +2439,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;（コミックを読むときに左から呼んでくださいね。）&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2126,13 +2461,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/be2c58e0eb22770a7f35e3ec1eb9687b/d2d38/pic1.png 295w,
 /static/be2c58e0eb22770a7f35e3ec1eb9687b/d19c0/pic1.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2154,13 +2490,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/5d935c7ba2ef4b5ecd9857037a726fba/d2d38/pic2.png 295w,
 /static/5d935c7ba2ef4b5ecd9857037a726fba/d19c0/pic2.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2182,13 +2519,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/2921811742def30e6ae9b0cea1c0f21a/d2d38/pic3.png 295w,
 /static/2921811742def30e6ae9b0cea1c0f21a/d19c0/pic3.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2210,13 +2548,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/b0516190f3bda110e57ece774ca33025/d2d38/pic4.png 295w,
 /static/b0516190f3bda110e57ece774ca33025/d19c0/pic4.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2238,13 +2577,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/64f46731b00d7e496c64bd97cc93e4e3/d2d38/pic5.png 295w,
 /static/64f46731b00d7e496c64bd97cc93e4e3/d19c0/pic5.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2266,13 +2606,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/9eaaa46f01bb40cd6a42bb69fcd7af97/d2d38/pic6.png 295w,
 /static/9eaaa46f01bb40cd6a42bb69fcd7af97/d19c0/pic6.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2294,13 +2635,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/6598da805500649e5894789259584e66/d2d38/pic7.png 295w,
 /static/6598da805500649e5894789259584e66/d19c0/pic7.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2322,13 +2664,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/93941417aeeec27bf0cce6415a46a350/d2d38/pic8.png 295w,
 /static/93941417aeeec27bf0cce6415a46a350/d19c0/pic8.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2350,6 +2693,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/756a66aea2ab70d7f35809a328f7b763/d2d38/pic9.png 295w,
 /static/756a66aea2ab70d7f35809a328f7b763/d19c0/pic9.png 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2372,7 +2716,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Bởi vì, dù sao cuộc đời vẫn còn rất nhiều điều tốt đẹp để hi vọng.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2394,13 +2738,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/d1defc6c57cbc7f2c29275c305d387cd/ebbe7/pic1.jpg 295w,
 /static/d1defc6c57cbc7f2c29275c305d387cd/48a11/pic1.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2422,13 +2767,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/c54f891606932205719997e716581649/ebbe7/pic2.jpg 295w,
 /static/c54f891606932205719997e716581649/48a11/pic2.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2450,13 +2796,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/0aee5fd711bf441cf9c13551bccd40b4/ebbe7/pic3.jpg 295w,
 /static/0aee5fd711bf441cf9c13551bccd40b4/48a11/pic3.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2478,13 +2825,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/c3f22a3bbcaaebdedaeb0e86c74d41a3/ebbe7/pic4.jpg 295w,
 /static/c3f22a3bbcaaebdedaeb0e86c74d41a3/48a11/pic4.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2506,13 +2854,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/cffcc80ac7c6ed33b2302e22e8886616/ebbe7/pic5.jpg 295w,
 /static/cffcc80ac7c6ed33b2302e22e8886616/48a11/pic5.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2534,13 +2883,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/03bae34cfeab2f4d49f502bfb10e7a2a/ebbe7/pic6.jpg 295w,
 /static/03bae34cfeab2f4d49f502bfb10e7a2a/48a11/pic6.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2562,13 +2912,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/6ca47aadcaf66d9d978e46fa6a424dcf/ebbe7/pic7.jpg 295w,
 /static/6ca47aadcaf66d9d978e46fa6a424dcf/48a11/pic7.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2590,13 +2941,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/22c111a007fda89904227936f2ff8e39/ebbe7/pic8.jpg 295w,
 /static/22c111a007fda89904227936f2ff8e39/48a11/pic8.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2618,6 +2970,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/88ab5f3dffa0b5233a7876cd302d9ccf/ebbe7/pic9.jpg 295w,
 /static/88ab5f3dffa0b5233a7876cd302d9ccf/48a11/pic9.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
@@ -2628,7 +2981,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 &lt;p&gt;Because, while bathed in unjustness, the world is still embracing many beautiful moments, waiting to be unveiled.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2651,13 +3004,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/b66fb1a4fa168e084e48575f6559ef1c/c739e/pic1.jpg 590w,
 /static/b66fb1a4fa168e084e48575f6559ef1c/82472/pic1.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2680,13 +3034,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/9fdfce6e771d2478607e02884294fe5e/c739e/pic2.jpg 590w,
 /static/9fdfce6e771d2478607e02884294fe5e/82472/pic2.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2709,13 +3064,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/03d9dcadd4633162c32348a1a1569542/c739e/pic3.jpg 590w,
 /static/03d9dcadd4633162c32348a1a1569542/82472/pic3.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2738,13 +3094,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/70f2ac1ee8b065807c281d0506c1023e/c739e/pic4.jpg 590w,
 /static/70f2ac1ee8b065807c281d0506c1023e/82472/pic4.jpg 600w&quot;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2766,13 +3123,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/f6c9493bfcf9bcfcaba1e1582b27e9c9/ebbe7/pic5.jpg 295w,
 /static/f6c9493bfcf9bcfcaba1e1582b27e9c9/48a11/pic5.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2794,13 +3152,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/7f4ac9e58e7244c61730c6e4bc4c0af5/ebbe7/pic6.jpg 295w,
 /static/7f4ac9e58e7244c61730c6e4bc4c0af5/48a11/pic6.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2822,13 +3181,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/54c4a30b8d915f24c2707c72c61e152d/ebbe7/pic7.jpg 295w,
 /static/54c4a30b8d915f24c2707c72c61e152d/48a11/pic7.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2850,13 +3210,14 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/a9cd114cb7f07f4c4cc77b7fa64450a3/ebbe7/pic8.jpg 295w,
 /static/a9cd114cb7f07f4c4cc77b7fa64450a3/48a11/pic8.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 500px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -2878,6 +3239,7 @@ Doing a side hustle, developing a small tool or app as a hobby, or just turning 
 /static/f3bffad41aea069feb191729d75159b7/ebbe7/pic9.jpg 295w,
 /static/f3bffad41aea069feb191729d75159b7/48a11/pic9.jpg 500w&quot;
         sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
